@@ -287,7 +287,7 @@ label.input-radio {
     transition: border-color 0.1s;
 }
 .true, .false {
-    width: 252px !important;
+    width: 282px !important;
 }
 label.input-radio input[type="radio"] {
     position: absolute;
@@ -299,7 +299,7 @@ label.input-radio input[type="radio"]:checked+.option-inner {
     background: #F7F7F7;
 }
 label.input-radio .option-inner {
-    width: 252px;
+    width: 282px;
     padding: 8px 15px 7px 10px;
     display: flex;
     flex-direction: row-reverse;

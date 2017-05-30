@@ -108,11 +108,6 @@
     table-layout: fixed;
 }
 
-.vertical-column-child {
-    vertical-align: middle;
-    display: table-cell;
-}
-
 .clearable {
 	background:url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
 	border:1px solid #999;
@@ -136,4 +131,9 @@
     background-color: #F7F7F7;
     margin-left: 61px;
     padding: 10px;
+}
+
+.col-centered {
+    margin: 0 auto;
+    float: none;
 }
