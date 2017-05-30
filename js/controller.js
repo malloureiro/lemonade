@@ -13,7 +13,14 @@ app.factory('DataHolderModel', function() {
             estado: '',
             pais: ''
         },
-        ownership: '' // possible: rent/own
+        ownership: '', // rent/own
+        optionals: {
+            roommates: false,
+            fire_alarm: false,
+            burglar_alarm: false
+        } ,
+        valuables: false,
+        activePolicy: false
     }
 
     var map = {
@@ -21,7 +28,6 @@ app.factory('DataHolderModel', function() {
         infowindow: null,
         marker: null,
         map: null
-
     }
 
     var DataHolderModel = {
@@ -39,12 +45,13 @@ app.controller('appController', function($scope, DataHolderModel) {
     $scope.errorMessage = "";
     $scope.buttonDisabled = true;
     $scope.meetsRequirement = false;
+    $scope.infoMessage = "";
 
-    //checkButtonDisabled();
-
+    var renterPageFlow = ['form-1', 'form-2', 'form-3', 'form-4', 'form-5', 'form-6', 'form-final'];
+    
     var pageId = $("section > .container-fluid").attr("id");
 
-    $(".back-icon").click(function() {
+    $scope.goBackwards = function() {
         switch(pageId) {
             case 'form-2':
                 window.location.href = "#start/1";
@@ -56,10 +63,16 @@ app.controller('appController', function($scope, DataHolderModel) {
             case 'form-4':
                 window.location.href = "#start/3";
                 break;
+            case 'form-5':
+                window.location.href = "#start/4";
+                break;
+            case 'form-7':
+                window.location.href = "#start/3";
+                break;
             default:
                 return false;
         }
-    });
+    }
 
     $scope.validatePerson = function() {
         var firstName = $("#firstName").val();
@@ -102,9 +115,43 @@ app.controller('appController', function($scope, DataHolderModel) {
         var input = $("input[name='ownership']:checked").val();
         if (input) {
             $scope.model.ownership = input;
-            window.location.href = "#start/4";
+
+            if (input == 'renter') {
+                window.location.href = "#start/4";
+                $("#roommates-option").show();
+            } else {
+                window.location.href = "#start/7";
+            }
         }
     }
+
+    $scope.roommateChange = function() {
+        if ($scope.model.optionals.roommates) {
+            $scope.infoMessage = "Os itens pessoais de seus colegas de quarto não são cobertos por esta apólice";
+            $("#info-bubble-row").show();
+        } else {
+            $("#info-bubble-row").hide();
+        }
+    }
+
+    $scope.valuableChange = function() {
+        if ($scope.model.valuables == "true") {
+            $scope.infoMessage = "OK. Vou te mostrar como adicioná-los a sua apólice em alguns passos";
+            $("#info-bubble-row").show();
+        } else {
+            $("#info-bubble-row").hide();
+        }
+    }
+
+    $scope.activePolicyChange = function() {
+        if ($scope.model.activePolicy == "true") {
+            $scope.infoMessage = "Depois que você obter nosso seguro, iremos notificar seu antigo segurador para cancelar sua apólice antiga";
+            $("#info-bubble-row").show();
+        } else {
+            $("#info-bubble-row").hide();
+        }
+    }
+
 
     $scope.validateOptionals = function() {
         window.location.href = "#start/5";

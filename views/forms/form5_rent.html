@@ -4,31 +4,44 @@
 	<div id="form-5" class="container-fluid">
 		<div class="row">
 			<div class="col-xs-1 vcenter" style="background-color: blue;">
-				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+				<i class="glyphicon glyphicon-chevron-left back-icon" ng-click="goBackwards()"></i>
 			</div>
 			<div class="col-xs-10 vcenter">
 				<div class="container start-container">
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<h3>Você possui jóias valiosas, câmeras fotográficas, bicicletas ou objetos de arte?</h3>
+							<h3>
+								Você possui jóias valiosas, câmeras fotográficas, <br> bicicletas ou objetos de arte? 
+								<span>
+									<img src="./imgs/jewelry.png">
+								</span>
+							</h3>
 						</div>
 					</div>
 					<div class="row vertical-column">
 						<div class="col-xs-9 col-xs-offset-3">
 							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="item_owner" value="true">
+							   <input type="radio" tabindex="1" name="item_owner" value="true" ng-change="valuableChange()" ng-model="model.valuables">
 							   <div class="option-inner">
 								  <h5>Sim</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="item_owner" value="false">
+							   <input type="radio" tabindex="2" name="item_owner" value="false" ng-change="valuableChange()" ng-model="model.valuables">
 							   <div class="option-inner">
 								  <h5>Não</h5>
 								  <i></i>
 							   </div>
 							</label>
+						</div>
+					</div>
+					<div class="row" id="info-bubble-row" style="display: none;">
+						<div class="col-xs-offset-3 col-xs-6">
+							<div class="mini-humanoid">
+								<img src="./imgs/Amanda.jpg" alt="Amanda.jpg" title="Amanda" height="35px">
+							</div>
+							<p class="info-bubble"> {{infoMessage}} </p>
 						</div>
 					</div>
 					<div class="row">

@@ -27,7 +27,7 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider, $loc
        controller: 'appController'
       })
       .when('/start/6', {
-       templateUrl: "views/forms/form6_rent.html",
+       templateUrl: "views/forms/form6_common.html",
        controller: 'appController'
       })
       .when('/start/7', {
@@ -52,6 +52,14 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider, $loc
       })
       .when('/start/12', {
        templateUrl: "views/forms/form12_own.html",
+       controller: 'appController'
+      })
+      .when('/start/13', {
+       templateUrl: "views/forms/form13_own.html",
+       controller: 'appController'
+      })
+      .when('/final', {
+       templateUrl: "views/forms/form-final.html",
        controller: 'appController'
       })
       .otherwise({ redirectTo: '/' });

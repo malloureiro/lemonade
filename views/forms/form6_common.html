@@ -16,19 +16,27 @@
 					<div class="row vertical-column">
 						<div class="col-xs-9 col-xs-offset-3">
 							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="active_policy" value="true">
+							   <input type="radio" tabindex="1" name="active_policy" value="true" ng-change="activePolicyChange()" ng-model="model.activePolicy">
 							   <div class="option-inner">
 								  <h5>Sim</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="active_policy" value="false">
+							   <input type="radio" tabindex="2" name="active_policy" value="false" ng-change="activePolicyChange()" ng-model="model.activePolicy">
 							   <div class="option-inner">
 								  <h5>Não</h5>
 								  <i></i>
 							   </div>
 							</label>
+						</div>
+					</div>
+					<div class="row" id="info-bubble-row" style="display: none;">
+						<div class="col-xs-offset-3 col-xs-6">
+							<div class="mini-humanoid">
+								<img src="./imgs/Amanda.jpg" alt="Amanda.jpg" title="Amanda" height="35px">
+							</div>
+							<p class="info-bubble"> {{infoMessage}} </p>
 						</div>
 					</div>
 					<div class="row">
