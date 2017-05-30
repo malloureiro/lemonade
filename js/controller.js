@@ -13,14 +13,23 @@ app.factory('DataHolderModel', function() {
             estado: '',
             pais: ''
         },
-        ownership: '', // rent/own
+        // rent/own
+        ownership: '',
         optionals: {
             roommates: false,
             fire_alarm: false,
             burglar_alarm: false
         } ,
         valuables: false,
-        activePolicy: false
+        activePolicy: false,
+        policyPaymentType: '', // mortgage/none/insurer/dont_know
+        property: {
+            type: '', // condo/house
+            buildingType: '', // studio/duplex/triplex
+            use: '',
+            size: '',
+            loan: false
+        }
     }
 
     var map = {
@@ -47,30 +56,62 @@ app.controller('appController', function($scope, DataHolderModel) {
     $scope.meetsRequirement = false;
     $scope.infoMessage = "";
 
+    var pageFlow = new Map();
+    pageFlow.set('form-1', '#start/1');
+    pageFlow.set('form-2', '#start/2');
+    pageFlow.set('form-3', '#start/3');
+    pageFlow.set('form-4', '#start/4');
+    pageFlow.set('form-5', '#start/5');
+    pageFlow.set('form-6', '#start/6');
+    pageFlow.set('form-7', '#start/7');
+    pageFlow.set('form-8', '#start/8');
+    pageFlow.set('form-9', '#start/9');
+    pageFlow.set('form-10', '#start/10');
+    pageFlow.set('form-11', '#start/11');
+    pageFlow.set('form-12', '#start/12');
+    pageFlow.set('form-13', '#start/13');
+    pageFlow.set('form-final', '#final');
+    
+    // Fluxo de exibição para seleção de imóvel 'Alugado'
     var renterPageFlow = ['form-1', 'form-2', 'form-3', 'form-4', 'form-5', 'form-6', 'form-final'];
     
+    // Fluxo de exibição para seleção de imóvel 'Próprio' e 'Intenção de financiamento = Sim e Não'
+    var ownerCondoLoanPageFlow = ['form-1', 'form-2', 'form-3', 'form-7', 'form-10', 'form-4', 'form-5', 'form-11', 'form-12', 'form-final'];
+    var ownerCondoNoLoanPageFlow = ['form-1', 'form-2', 'form-3', 'form-7', 'form-10', 'form-4', 'form-5', 'form-11', 'form-14', 'form-final'];
+
+    var ownerHousePageFlow = ['form-1', 'form-2', 'form-3', 'form-7', '', '', '', '', '', '', '', '', '', ''];
+
     var pageId = $("section > .container-fluid").attr("id");
 
     $scope.goBackwards = function() {
-        switch(pageId) {
-            case 'form-2':
-                window.location.href = "#start/1";
-                break;
-            case 'form-3':
-                window.location.href = "#start/2";
-                reInitializeMap();
-                break;
-            case 'form-4':
-                window.location.href = "#start/3";
-                break;
-            case 'form-5':
-                window.location.href = "#start/4";
-                break;
-            case 'form-7':
-                window.location.href = "#start/3";
-                break;
-            default:
-                return false;
+        
+        var previousPage = null;
+        var routeTo = null;
+
+        if ($scope.model.ownership == "renter") {
+            var idx = renterPageFlow.indexOf(pageId);
+            previousPage = renterPageFlow[idx-1];
+            routeTo = pageFlow.get(previousPage);
+            window.location.href = routeTo;
+
+        } else if ($scope.model.ownership == "owner") {
+            var idx = ownerPageFlow.indexOf(pageId);
+            previousPage = ownerPageFlow[idx-1];
+            routeTo = pageFlow.get(previousPage);
+            window.location.href = routeTo;            
+
+        } else {
+            // Common routes
+            switch(pageId) {
+                case 'form-2':
+                    window.location.href = '#start/1';
+                    break;
+                case 'form-3':
+                    window.location.href = '#start/2';
+                    break;
+                default:
+                    window.location.href = '#start/1';
+            }
         }
     }
 
@@ -102,7 +143,7 @@ app.controller('appController', function($scope, DataHolderModel) {
         }
         if (locationInput) {
             if ($scope.model.userAddress.isValid) {
-                window.location.href =  '#start/3';    
+                window.location.href =  '#start/3';
             } else {
                 // Adicionando validação em caso de evento 'place_changed' não disparado
                 $scope.errorMessage = "O endereço informado não é válido";
@@ -123,6 +164,73 @@ app.controller('appController', function($scope, DataHolderModel) {
                 window.location.href = "#start/7";
             }
         }
+    }
+
+    $scope.validateOptionals = function() {
+        window.location.href = "#start/5";
+    }
+
+    $scope.validateValuables = function() {
+        if ($scope.model.ownership == "renter") {
+            window.location.href = "#start/6";
+        }
+
+        if ($scope.model.ownership == "owner") {
+            if ($scope.model.property.type == "condo") {
+                window.location.href = "#start/11";
+            }
+        }
+    }
+
+    $scope.validatePropertyType = function() {
+        if ($scope.model.property.type == "condo") {
+            window.location.href = "#start/10";
+        } else {
+            window.location.href = "#start/8";
+        }
+        
+    }
+
+    $scope.validateActivePolicy = function() {
+        window.location.href = "#final";
+    }
+
+    $scope.validateSize = function() {
+        var size = $scope.model.property.size;
+        if (size < 10) {
+            $scope.errorMessage = size + " parece ser improvável. Por favor tente novamente.";
+            $(".error-message").show();
+            return;
+        }
+        window.location.href = "#start/4";
+        setTimeout(function() {
+            $("#roommates-option").hide();
+            var el = $("#roommates-option").parent();
+            $(el).removeClass("col-xs-10 col-xs-offset-2");
+            $(el).addClass("col-xs-6 col-xs-offset-3");
+        }, 10);
+    }
+
+    $scope.validateLoan = function() {
+        if ($scope.model.ownership == "owner") {
+            if ($scope.model.property.type == "condo") {
+                if ($scope.model.property.loan == "true") {
+                    window.location.href = "#start/12";
+                } else {
+                    window.location.href = "#start/14";
+                }
+            }
+        }
+    }
+
+    $scope.validatePaymentType = function() {
+        if ($scope.model.ownership == "owner") {
+            if ($scope.model.property.type == "condo") {
+                if ($scope.model.property.loan == "true") {
+                    window.location.href = "#final";
+                }
+            }
+        }   
     }
 
     $scope.roommateChange = function() {
@@ -150,23 +258,6 @@ app.controller('appController', function($scope, DataHolderModel) {
         } else {
             $("#info-bubble-row").hide();
         }
-    }
-
-
-    $scope.validateOptionals = function() {
-        window.location.href = "#start/5";
-    }
-
-    $scope.validateValuables = function() {
-        window.location.href = "#start/6";
-    }
-
-    $scope.validateActivePolicy = function() {
-        window.location.href = "#start/7";
-    }
-
-    $scope.validatePropertyType = function() {
-        
     }
 
     /*

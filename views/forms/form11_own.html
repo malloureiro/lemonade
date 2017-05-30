@@ -3,27 +3,27 @@
 <section>
 	<div id="form-11" class="container-fluid">
 		<div class="row">
-			<div class="col-xs-1 vcenter" style="background-color: blue;">
+			<div class="col-xs-1 vcenter">
 				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
 			</div>
 			<div class="col-xs-10 vcenter">
 				<div class="container start-container">
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<h3>Você possui, ou pretende realizar, uma hipoteca ou financiamento desta propriedade?</h3>
+							<h3>Você possui, ou pretende realizar, uma hipoteca <br> ou financiamento desta propriedade?</h3>
 						</div>
 					</div>
-					<div class="row vertical-column">
-						<div class="col-xs-9 col-xs-offset-3">
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-5 col-centered">
 							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="loan_option" value="true">
+							   <input type="radio" tabindex="1" name="loan_option" value="true" ng-model="model.property.loan">
 							   <div class="option-inner">
 								  <h5>Sim</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="loan_option" value="false">
+							   <input type="radio" tabindex="2" name="loan_option" value="false" ng-model="model.property.loan">
 							   <div class="option-inner">
 								  <h5>Não</h5>
 								  <i></i>
@@ -33,12 +33,12 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateValuables()">Próximo</button>
+							<button class="start-buttons" ng-click="validateLoan()">Próximo</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 vcenter" style="background-color: green;">
+			<div class="col-xs-1 vcenter">
 			</div>
 		</div>
 	</div>
