@@ -1,0 +1,63 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-4" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Você possui alguma das opções na sua residência?</h3>
+						</div>
+					</div>
+					<div class="row" style="padding: 0;">
+						<div class="col-xs-10 col-xs-offset-2">
+							<label class="input-checkbox with-icn">
+								<input type="checkbox" name="roommates" tabindex="1" value="on">
+								<div class="option-wrapper">
+									<img src="imgs/roommates.png">
+									<div class="iconic-option-inner">
+										<h5>Colegas de Quarto</h5>
+										<i></i>
+									</div>
+								</div>
+							</label>
+							<label class="input-checkbox with-icn">
+							   <input type="checkbox" name="local_fire_alarm" tabindex="2" value="on">
+							   <div class="option-wrapper">
+								  <img src="imgs/fire-alarm.png">
+								  <div class="iconic-option-inner">
+									 <h5>Alarme de incêndio</h5>
+									 <i></i>
+								  </div>
+							   </div>
+							</label>
+							<label class="input-checkbox with-icn">
+							   <input type="checkbox" name="local_burglar_alarm" tabindex="3" value="on">
+							   <div class="option-wrapper">
+								  <img src="imgs/burglar-alarm.png">
+								  <div class="iconic-option-inner">
+									 <h5>Alarme anti-roubo</h5>
+									 <i></i>
+								  </div>
+							   </div>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validateOptionals()">Vamos</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+
+

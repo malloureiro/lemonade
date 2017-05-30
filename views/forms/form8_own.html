@@ -1,0 +1,54 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-6" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Qual é o tipo da construção?</h3>
+						</div>
+					</div>
+					<div class="row vertical-column">
+						<div class="col-xs-9 col-xs-offset-3 vertical-column-child">
+							<label class="input-radio true">
+							   <input type="radio" tabindex="1" name="building_type" value="studio">
+							   <div class="option-inner">
+								  <h5>Studio</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="2" name="building_type" value="duplex">
+							   <div class="option-inner">
+								  <h5>Duplex</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="3" name="building_type" value="triplex">
+							   <div class="option-inner">
+								  <h5>Triplex</h5>
+								  <i></i>
+							   </div>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validatePropertyType()">Próximo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+
+

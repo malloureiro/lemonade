@@ -1,0 +1,119 @@
+.btn {
+	background-color: transparent;
+}
+
+.humanoid {
+	width: 100px;
+	border: 1px solid #cac6c7;
+	height: 100px;
+	border-radius: 100px;
+	padding: 10px;
+	display: inline-block;
+	margin-top: -65px;
+	background: white;
+	position: absolute;
+	margin-left: -60px;
+}
+
+.vcenter {
+	display: flex;
+	align-items: center;
+	min-height: 500px;
+}
+
+.back-icon {
+	padding-left: 20px;
+	font-size: 90px;
+	color: #DADADA;
+	cursor: pointer;
+}
+
+.start-container {
+	margin-top: 130px;
+}
+
+.start-container .row {
+	padding: 20px;
+}
+
+.start-container h3 {
+	line-height: 150%;
+}
+
+.start-inputs {
+    padding: 20px 6px; 
+}
+
+.form-control:focus {
+    border: 2px solid #ea3d1e;
+    box-shadow: 4px -1px 11px -1px rgba(245,186,147,1);
+}
+
+.form-control-focused {
+    border: 2px solid #ea3d1e;
+    box-shadow: 4px -1px 11px -1px rgba(245,186,147,1);
+}
+
+.start-buttons {
+    font: 700 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;;
+    height: 47px;
+    line-height: 47px;
+    padding: 0 70px;
+    border: 0;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: #ea3d1e;
+    color: #fff;
+}
+
+.start-buttons.disabled {
+    background-color: #B7B7B7;
+}
+
+.error-message {
+    color: #FF0083;
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: -40px;
+}
+
+.error-message-sign {
+    display: inline-block;
+    border-radius: 16px;
+    border: 1px solid;
+    width: 21px;
+}
+
+#map {
+	width: 100%; 
+	height: 120px;
+}
+
+.vertical-column {
+    display: table;
+    table-layout: fixed;
+}
+
+.vertical-column-child {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.clearable {
+	background:url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
+	border:1px solid #999;
+	padding:3px 18px 3px 4px;
+	border-radius:3px;
+	transition: background 0.4s; 
+}
+
+.clearable.x {
+	background-position: right 5px center;
+}
+
+.clearable.onX {
+	cursor:pointer;
+}
+

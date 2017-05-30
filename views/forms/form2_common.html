@@ -1,0 +1,50 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-2" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container" ng-controller="mapController">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Muito prazer em te conhecer {{user}} ! Qual é o seu endereço?</h3>
+						</div>
+					</div>
+					<div class="row container-map" style="display: none;">
+						<div class="col-xs-6 col-xs-offset-3 text-center">
+							<div id="map">
+							</div>
+						</div>
+					</div>
+					<div class="row error-message" style="display: none;">
+						<div class="col-xs-offset-3 col-xs-6">
+							<span class="error-message">
+								<p class="error-message-sign"><strong>!</strong></p>
+								{{errorMessage}}
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3 text-center">
+							<input type="text" name="input-val" id="locationInput" class="form-control clearable" placeholder="Seu endereço" ng-model="model.userAddress.formatted_address"/>
+						</div>
+						<div class="col-xs-3">
+							<input type="text" name="input-val" id="locationCompInput" class="form-control" placeholder="Complemento" ng-model="model.userAddress.complemento"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validateAddress()">Próximo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+

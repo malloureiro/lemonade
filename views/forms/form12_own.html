@@ -1,0 +1,61 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-12" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Como você realiza o pagamento de sua apólice de seguro?</h3>
+						</div>
+					</div>
+					<div class="row vertical-column">
+						<div class="col-xs-9 col-xs-offset-3 vertical-column-child">
+							<label class="input-radio true" style="width:350px !important;">
+							   <input type="radio" tabindex="1" name="policy_payment" value="mortgage">
+							   <div class="option-inner" style="width:370px;">
+								  <h5>Via pagamentos hipotecários</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false" style="width:350px !important;">
+							   <input type="radio" tabindex="2" name="policy_payment" value="none">
+							   <div class="option-inner" style="width:370px;">
+								  <h5>Não possuo seguro</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false" style="width:350px !important;">
+							   <input type="radio" tabindex="3" name="policy_payment" value="insurer">
+							   <div class="option-inner" style="width:370px;">
+								  <h5>Diretamente com o segurador</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false" style="width:350px !important;">
+							   <input type="radio" tabindex="4" name="policy_payment" value="dont_know">
+							   <div class="option-inner" style="width:370px;">
+								  <h5>Não sei</h5>
+								  <i></i>
+							   </div>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validatePropertyType()">Próximo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+
+

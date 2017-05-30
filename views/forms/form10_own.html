@@ -1,0 +1,42 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-1" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Qual é o tamanho da propriedade (em metros quadrados) ?</h3>
+						</div>
+					</div>
+					<div class="row error-message" style="display: none;">
+						<div class="col-xs-offset-3 col-xs-6">
+							<span class="error-message">
+								<p class="error-message-sign"><strong>!</strong></p>
+								{{errorMessage}}
+							</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-3 col-xs-offset-3">
+							<input type="text" name="input-size" class="form-control start-inputs" placeholder="Metros">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validateSize()">Próximo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+
+

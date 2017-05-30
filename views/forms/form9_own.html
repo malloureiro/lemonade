@@ -1,0 +1,68 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-6" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter" style="background-color: blue;">
+				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Qual é a finalidade do imóvel?</h3>
+						</div>
+					</div>
+					<div class="row vertical-column">
+						<div class="col-xs-9 col-xs-offset-3">
+							<label class="input-radio true">
+							   <input type="radio" tabindex="1" name="used_type" value="living">
+							   <div class="option-inner">
+								  <h5>Moradia</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="2" name="used_type" value="move">
+							   <div class="option-inner">
+								  <h5>Não me mudei</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="3" name="used_type" value="vacations">
+							   <div class="option-inner">
+								  <h5>Casa de férias</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="4" name="used_type" value="rent">
+							   <div class="option-inner">
+								  <h5>Aluguel</h5>
+								  <i></i>
+							   </div>
+							</label>
+							<label class="input-radio false">
+							   <input type="radio" tabindex="5" name="used_type" value="business">
+							   <div class="option-inner">
+								  <h5>Negócios</h5>
+								  <i></i>
+							   </div>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-click="validatePropertyType()">Próximo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter" style="background-color: green;">
+			</div>
+		</div>
+	</div>
+</section>
+
+
