@@ -28,16 +28,21 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-5 col-xs-offset-3">
-							<input type="text" name="input-val" id="locationInput" class="form-control clearable" placeholder="Seu endereço" ng-model="model.userAddress.formatted_address"/>
-						</div>
-						<div class="col-xs-2" style="padding: 0;">
-							<input type="text" name="input-val" id="locationCompInput" class="form-control" placeholder="Complemento" ng-model="model.userAddress.complemento"/>
-						</div>
+						<form name="inputForm">
+							<div class="col-xs-5 col-xs-offset-3">
+								<div class="inner-addon left-addon">
+									<i class="glyphicon glyphicon-map-marker"></i>
+									<input type="text" name="input-val" id="locationInput" class="form-control clearable" placeholder="Seu endereço" ng-model="model.userAddress.formatted_address" required>
+								</div>
+							</div>
+							<div class="col-xs-2" style="padding: 0;">
+								<input type="text" name="input-val" id="locationCompInput" class="form-control" placeholder="Complemento" ng-model="model.userAddress.complemento" >
+							</div>
+						</form>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateAddress()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateAddress()">Próximo</button>
 						</div>
 					</div>
 				</div>

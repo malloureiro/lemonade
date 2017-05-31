@@ -23,12 +23,14 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-3 col-xs-offset-4 col-centered">
-							<input type="text" name="input-size" class="form-control clearable" placeholder="Metros" ng-model="model.property.size">
+							<form name="inputForm">
+								<input type="text" name="input-size" class="form-control clearable" placeholder="Metros" ng-model="model.property.size" required>
+							</form>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateSize()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateSize()">Próximo</button>
 						</div>
 					</div>
 				</div>

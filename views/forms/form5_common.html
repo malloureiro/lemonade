@@ -20,20 +20,22 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-5 col-centered">
-							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="item_owner" value="true" ng-change="valuableChange()" ng-model="model.valuables">
-							   <div class="option-inner">
-								  <h5>Sim</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="item_owner" value="false" ng-change="valuableChange()" ng-model="model.valuables">
-							   <div class="option-inner">
-								  <h5>Não</h5>
-								  <i></i>
-							   </div>
-							</label>
+							<form name="inputForm">
+								<label class="input-radio true">
+								   <input type="radio" tabindex="1" name="item_owner" value="true" ng-change="valuableChange()" ng-model="model.valuables" required>
+								   <div class="option-inner">
+									  <h5>Sim</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="2" name="item_owner" value="false" ng-change="valuableChange()" ng-model="model.valuables" required>
+								   <div class="option-inner">
+									  <h5>Não</h5>
+									  <i></i>
+								   </div>
+								</label>
+							</form>
 						</div>
 					</div>
 					<div class="row" id="info-bubble-row" style="display: none;">
@@ -46,7 +48,7 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateValuables()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateValuables()">Próximo</button>
 						</div>
 					</div>
 				</div>

@@ -22,16 +22,18 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-3 col-xs-offset-3">
-							<input type="text" name="input-person" id="firstName" class="form-control start-inputs" placeholder="Primeiro nome" ng-model="model.userName">
-						</div>
-						<div class="col-xs-3">
-							<input type="text" name="input-person" id="lastName" class="form-control start-inputs" placeholder="Último nome" ng-model="model.userSurname">
-						</div>
+						<form name="inputForm">
+							<div class="col-xs-3 col-xs-offset-3">
+								<input type="text" name="input-person" id="firstName" class="form-control start-inputs" placeholder="Primeiro nome" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="model.userName" required>
+							</div>
+							<div class="col-xs-3">
+								<input type="text" name="input-person" id="lastName" class="form-control start-inputs" placeholder="Último nome" ng-pattern="/^[a-zA-Z\s]*$/" ng-model="model.userSurname" required>
+							</div>
+						</form>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validatePerson()">Vamos</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validatePerson()">Vamos</button>
 						</div>
 					</div>
 				</div>

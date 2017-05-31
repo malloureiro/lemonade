@@ -60,13 +60,8 @@ app.controller('appController', function($scope, DataHolderModel) {
 
     var pageId = $("section > .container-fluid").attr("id");
 
-
-
-
     $scope.goBackwards = function() {
         
-        debugger;
-
         var previousPage = null;
         var routeTo = null;
         var idx = null;
@@ -176,11 +171,6 @@ app.controller('appController', function($scope, DataHolderModel) {
                 return;
             }
             window.location.href =  '#start/2';
-        } else {
-            $scope.errorMessage = "As informações devem ser preenchidas";
-            $(".error-message").show();
-            $("#firstName").addClass("form-control-focused");
-            $("#lastName").addClass("form-control-focused");
         }
     }
 
@@ -361,38 +351,18 @@ app.controller('appController', function($scope, DataHolderModel) {
             $(el).addClass("col-xs-6 col-xs-offset-3");
         }, 10);
     }
-    /*
-        Esta verificação deveria ser realizada através de propriedades nativas do AngularJS. Exemplo: ng-disabled.
-    */
-    function checkButtonDisabled() {
-        /*debugger;
-        var target = ".start-buttons";
-        if ($scope.buttonDisabled && $scope.meetsRequirement) {
-            $(target).removeClass('disabled');
-            $scope.buttonDisabled = false;
-        }
-
-        var isDisabled = $(target).hasClass('disabled');
-        if (isDisabled && $scope.buttonDisabled) {
-            $(target).removeClass('disabled');
-            $scope.buttonDisabled = false;
-        }*/
-    }
 
     // Evento no input text do Form 1
-    $(document).on("input", "input[name='input-person']", function() {
+    $(document).on("input", function() {
         if ($(".error-message").is(":visible")) {
-            $(this).removeClass("form-control-focused");
-            return;
+            $(".error-message").hide();
         }
-        $(".error-message").hide();
     });
 
     // Evento no radio do Form 3
     $(document).on("change", "input[name='ownership']", function() {
         if ($("input[name='ownership']:checked").val()) {
             $scope.meetsRequirement = true;
-            //checkButtonDisabled();
         }
     });    
 
@@ -515,7 +485,7 @@ app.controller('mapController', function($scope, DataHolderModel) {
         $(this)[toggleClass(this.offsetWidth-18 < e.clientX -this.getBoundingClientRect().left)]('onX');   
     })
     .on('click', '.onX', function() {
-        $(this).removeClass('x onX').val('');
+        $(this).removeClass('x onX').val("");
         $('.container-map').hide();
         $(".error-message").hide();
     });

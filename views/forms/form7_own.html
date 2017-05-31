@@ -15,25 +15,27 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-5 col-centered">
-							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="property_type" value="condo" ng-model="model.property.type">
-							   <div class="option-inner">
-								  <h5>Condomínio</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="property_type" value="house" ng-model="model.property.type">
-							   <div class="option-inner">
-								  <h5>Residência</h5>
-								  <i></i>
-							   </div>
-							</label>
+							<form name="inputForm">
+								<label class="input-radio true">
+								   <input type="radio" tabindex="1" name="property_type" value="condo" ng-model="model.property.type" required>
+								   <div class="option-inner">
+									  <h5>Condomínio</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="2" name="property_type" value="house" ng-model="model.property.type" required>
+								   <div class="option-inner">
+									  <h5>Residência</h5>
+									  <i></i>
+								   </div>
+								</label>
+							</form>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validatePropertyType()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validatePropertyType()">Próximo</button>
 						</div>
 					</div>
 				</div>
