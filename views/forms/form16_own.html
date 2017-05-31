@@ -1,7 +1,7 @@
 <div ng-include="'views/humanoid.html'"></div>
 
 <section>
-	<div id="form-10" class="container-fluid">
+	<div id="form-16" class="container-fluid">
 		<div class="row">
 			<div class="col-xs-1 vcenter">
 				<i class="glyphicon glyphicon-chevron-left back-icon" ng-click="goBackwards()"></i>
@@ -10,7 +10,7 @@
 				<div class="container start-container">
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<h3>Qual é o tamanho da propriedade (em metros quadrados) ?</h3>
+							<h3>Qual é o seu CPF?</h3>
 						</div>
 					</div>
 					<div class="row error-message" style="display: none;">
@@ -22,13 +22,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-3 col-xs-offset-4 col-centered">
-							<input type="text" name="input-size" class="form-control clearable" placeholder="Metros" ng-model="model.property.size">
+						<div class="col-xs-3 col-xs-offset-3 col-centered">
+							<input type="text" name="cpf" class="form-control start-inputs" placeholder="XXX.XXX.XXX-XX" ng-model="model.cpf">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateSize()">Próximo</button>
+							<button class="start-buttons" ng-click="validateCpf()">Vamos</button>
 						</div>
 					</div>
 				</div>

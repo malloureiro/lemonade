@@ -3,8 +3,8 @@
 <section>
 	<div id="form-9" class="container-fluid">
 		<div class="row">
-			<div class="col-xs-1 vcenter" style="background-color: blue;">
-				<i class="glyphicon glyphicon-chevron-left back-icon"></i>
+			<div class="col-xs-1 vcenter">
+				<i class="glyphicon glyphicon-chevron-left back-icon" ng-click="goBackwards()"></i>
 			</div>
 			<div class="col-xs-10 vcenter">
 				<div class="container start-container">
@@ -16,35 +16,35 @@
 					<div class="row vertical-column">
 						<div class="col-xs-9 col-xs-offset-3">
 							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="used_type" value="living">
+							   <input type="radio" tabindex="1" name="used_type" value="living" ng-model="model.property.use">
 							   <div class="option-inner">
 								  <h5>Moradia</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="used_type" value="move">
+							   <input type="radio" tabindex="2" name="used_type" value="move" ng-model="model.property.use">
 							   <div class="option-inner">
-								  <h5>Não me mudei</h5>
+								  <h5>Ainda não me mudei</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="3" name="used_type" value="vacations">
+							   <input type="radio" tabindex="3" name="used_type" value="vacations" ng-model="model.property.use">
 							   <div class="option-inner">
 								  <h5>Casa de férias</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="4" name="used_type" value="rent">
+							   <input type="radio" tabindex="4" name="used_type" value="rent" ng-model="model.property.use">
 							   <div class="option-inner">
 								  <h5>Aluguel</h5>
 								  <i></i>
 							   </div>
 							</label>
 							<label class="input-radio false">
-							   <input type="radio" tabindex="5" name="used_type" value="business">
+							   <input type="radio" tabindex="5" name="used_type" value="business" ng-model="model.property.use">
 							   <div class="option-inner">
 								  <h5>Negócios</h5>
 								  <i></i>
@@ -54,12 +54,12 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validatePropertyType()">Próximo</button>
+							<button class="start-buttons" ng-click="validatePropertyUseType()">Próximo</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 vcenter" style="background-color: green;">
+			<div class="col-xs-1 vcenter">
 			</div>
 		</div>
 	</div>
