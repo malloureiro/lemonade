@@ -1,5 +1,6 @@
 app.factory('DataHolderModel', function() {
-    var model = {
+    var model = {};
+    var default_model = {
         userName: '',
         userSurname: '',
         cpf: '',
@@ -14,8 +15,13 @@ app.factory('DataHolderModel', function() {
             estado: '',
             pais: ''
         },
-        // rent/own
-        ownership: '',
+        map: {
+            autocomplete: null,
+            infowindow: null,
+            marker: null,
+            map: null
+        },
+        ownership: '', // rent/own
         optionals: {
             roommates: false,
             fire_alarm: false,
@@ -31,21 +37,30 @@ app.factory('DataHolderModel', function() {
             size: '',
             loan: ''
         },
-        moveInDsate: '',
-        debits: '' // nope/one/more
-    }
+        moveInDate: '',
+        debits: '', // nope/one/more
+        
+        resetData : function() {
+            return model = angular.copy(default_model, model);
+        }
+    };
+    default_model.resetData();
 
-    var map = {
-        autocomplete: null,
-        infowindow: null,
-        marker: null,
-        map: null
+    var contactUs = {};
+    var contactUs_default = {
+        name: '',
+        email: '',
+        message: '',
+        resetData: function() {
+            return contactUs = angular.copy(contactUs_default, contactUs);
+        }
     }
+    contactUs_default.resetData();
 
     var DataHolderModel = {
         model,
-        map
-    }
+        contactUs
+    };
 
     return DataHolderModel;
 });
@@ -54,15 +69,19 @@ app.controller('appController', function($scope, DataHolderModel) {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    $scope.model = angular.copy(DataHolderModel.model);
-    $scope.map = DataHolderModel.map;
+    $scope.contactModel = DataHolderModel.contactUs;
+    $scope.model = DataHolderModel.model;
+    $scope.map = $scope.model.map;
     $scope.errorMessage = "";
     $scope.infoMessage = "";
 
-    $scope.restart = function() {
-        $scope.model = angular.copy(DataHolderModel.model);
-        window.location.href = "#start/1";
+    $scope.clearContactForm = function() {
+        DataHolderModel.contactUs.resetData();
+    }
 
+    $scope.restart = function() {
+        DataHolderModel.model.resetData();
+        window.location.href = "#start/1";
     }
 
     $scope.goBackwards = function() {
@@ -349,6 +368,25 @@ app.controller('appController', function($scope, DataHolderModel) {
         }
     }
 
+    $scope.policyPaymentChange = function() {
+        var type = $scope.model.policyPaymentType;
+        
+        $scope.infoMessage = "";
+        $("#info-bubble-row").hide();
+
+        if (type == "mortgage") {
+            $scope.infoMessage = "Nós iremos realizar a cobrança em seu cartão apenas no primeiro mês e então os próximos pagamentos serão realizados diretamente com seu financiador";
+            $("#info-bubble-row").show();
+        } else if (type == "none") {
+            $scope.infoMessage = "Assim que você obter nosso seguro, cuidaremos para que seu financiador saiba dos detalhes";
+            $("#info-bubble-row").show();
+        } else if (type == "insurer") {
+            $scope.infoMessage = "Caso você obtenha nosso seguro, nós cuidaremos dos detalhes da troca de apólice de seguro e notificaremos seu antigo segurador." +
+                "Também cuidaremos para que você obtenha reembolso, se aplicável!";
+            $("#info-bubble-row").show();
+        }
+    }
+
     function hideRoommatesOption() {
         setTimeout(function() {
             $("#roommates-option").hide();
@@ -372,16 +410,13 @@ app.controller('appController', function($scope, DataHolderModel) {
         }
     });    
 
-    function reInitializeMap() {
-    }
-
 });
 
 app.controller('mapController', function($scope, DataHolderModel) {
 
     $scope.model = DataHolderModel.model;
     $scope.user = $scope.model.userName;
-    $scope.mapModel = DataHolderModel.map;
+    $scope.mapModel = $scope.model.map;
     $scope.errorMessage = "";
 
     angular.element(document).ready(function () {

@@ -7,10 +7,10 @@
 				</div>
 				<div class="col-xs-2 text-right" style="margin-top: 17px;">
 					<span class="black-tooltip" data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
-						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#myModal"></button>
+						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#restartModal"></button>
 					</span>
 					<span data-toggle="tooltip" data-placement="bottom" title="Entrar em contato">
-						<button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal2"></button>
+						<button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#contactUsModal"></button>
 					</span>
 				</div>
 			</div>
@@ -26,51 +26,83 @@
 </header>
 
 <section>
-	<div class="modal fade-scale" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content">
-                <div class="modal-header" style="border: none;">
-                    <button type="button" class="close" data-dismiss="modal">
-                    	<span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                	<div class="text-center">
-	                	<h4 style="margin-bottom: 30px;">GOSTARIA DE RECOMEÇAR?</h4>
-	                	<p>Todas as suas respostas serão apagadas e você começará do início.</p>
-                	</div>
-                </div>
-                <div class="modal-footer" style="border: none;">
-                	<div class="col-xs-4 col-xs-offset-2">
-	                    <button type="button" style="padding: 0 35px;" class="cancel-buttons" data-dismiss="modal">Cancelar</button>
-                	</div>
-                	<div class="col-xs-4">
-	                    <button type="button" style="padding: 0 35px;" class="start-buttons" data-dismiss="modal" ng-click="restart()">Recomeçar</button>
-                	</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="modal fade-scale" id="restartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="vertical-alignment-helper">
+	        <div class="modal-dialog vertical-align-center">
+	            <div class="modal-content">
+	                <div class="modal-header" style="border: none;">
+	                    <button type="button" class="close" data-dismiss="modal">
+	                    	<span aria-hidden="true">&times;</span>
+	                    </button>
+	                </div>
+	                <div class="modal-body">
+	                	<div class="text-center">
+		                	<h4 style="margin-bottom: 30px;">GOSTARIA DE RECOMEÇAR?</h4>
+		                	<p>Todas as suas respostas serão apagadas e você começará do início</p>
+	                	</div>
+	                </div>
+	                <div class="modal-footer" style="border: none;">
+	                	<div class="col-xs-4 col-xs-offset-2">
+		                    <button type="button" style="padding: 0 35px;" class="cancel-buttons" data-dismiss="modal">Cancelar</button>
+	                	</div>
+	                	<div class="col-xs-4">
+		                    <button type="button" style="padding: 0 35px;" class="start-buttons" data-dismiss="modal" ng-click="restart()">Recomeçar</button>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </section>
 
-<section>
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Modal title 2</h4>
-	      </div>
-	      <div class="modal-body">
-	        ...
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
-	      </div>
+<section ng-controller="appController">
+	<div class="modal fade-scale" id="contactUsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="vertical-alignment-helper">
+	        <div class="modal-dialog vertical-align-center">
+	            <div class="modal-content">
+	                <div class="modal-header" style="border: none;">
+	                    <button type="button" class="close" data-dismiss="modal" ng-click="clearContactForm()">
+	                    	<span aria-hidden="true">&times;</span>
+	                    </button>
+	                </div>
+	                <div class="modal-body">
+	                	<div class="text-center">
+		                	<h4 style="margin-bottom: 20px;">ENTRE EM CONTATO CONOSCO</h4>
+		                	<p style="margin-bottom: 40px;">Preencha suas informações, escreva sua mensagem e entraremos em contato com você</p>
+	                	</div>
+	                	<div class="form-group">
+	                		<form name="inputForm">
+	                			<div class="row">
+	                				<div class="error-message" style="display: none;">
+										<div class="col-xs-offset-3 col-xs-6">
+											<span class="error-message">
+												<p class="error-message-sign"><strong>!</strong></p>
+												{{errorMessage}}
+											</span>
+										</div>
+									</div>
+	                			</div>
+								<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
+	                				<input type="text" name="contact-us" tabindex="1" id="name" class="form-control start-inputs" placeholder="NOME COMPLETO" ng-model="contactModel.name" required>
+	                			</div>
+	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
+	                				<input type="text" name="contact-us" tabindex="2" id="address" class="form-control start-inputs" placeholder="E-MAIL" ng-model="contactModel.email" required>
+	                			</div>
+	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 25px;">
+	                				<textarea class="form-control" style="resize:none;" tabindex="3" rows="5" id="comment" placeholder="COMO PODEMOS TE AJUDAR?" ng-model="contactModel.message"></textarea>
+	                			</div>
+	                		</form>
+	                	</div>
+	                </div>
+	                <div class="modal-footer" style="border: none;">
+	                	<div class="row">
+		                	<div class="col-xs-4 col-xs-offset-4">
+			                    <button type="button" style="padding: 0 35px;" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" class="start-buttons" data-dismiss="modal">Enviar</button>
+		                	</div>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
 	    </div>
-	  </div>
 	</div>
 </section>
