@@ -65,7 +65,22 @@ app.factory('DataHolderModel', function() {
     return DataHolderModel;
 });
 
-app.controller('appController', function($scope, DataHolderModel) {
+app.factory('UtilityFactory', function() {
+    var util = {};
+    var util_default = {
+        keepBubbleMessage: false,
+        infoMessage: '',
+
+        reset: function() {
+            return util = angular.copy(util_default, util);
+        }
+    };
+    util_default.reset();
+
+    return util;
+})
+
+app.controller('appController', function($scope, DataHolderModel, UtilityFactory) {
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -73,7 +88,9 @@ app.controller('appController', function($scope, DataHolderModel) {
     $scope.model = DataHolderModel.model;
     $scope.map = $scope.model.map;
     $scope.errorMessage = "";
-    $scope.infoMessage = "";
+    /*$scope.infoMessage = "";*/
+
+    console.log(UtilityFactory.keepBubbleMessage);
 
     $scope.clearContactForm = function() {
         DataHolderModel.contactUs.resetData();
@@ -85,8 +102,9 @@ app.controller('appController', function($scope, DataHolderModel) {
     }
 
     $scope.goBackwards = function() {
+
         var pageId = $("section > .container-fluid").attr("id");
-        
+
         var previousPage = null;
         var routeTo = null;
         var idx = null;
@@ -182,6 +200,13 @@ app.controller('appController', function($scope, DataHolderModel) {
                 default:
                     window.location.href = '#start/1';
             }
+        }
+
+         if (UtilityFactory.keepBubbleMessage) {
+            setTimeout(function() {
+                $("#info-bubble-row").show();
+                $scope.infoMessage = UtilityFactory.infoMessage;
+            }, 1000);
         }
     }
 
@@ -352,8 +377,10 @@ app.controller('appController', function($scope, DataHolderModel) {
 
     $scope.valuableChange = function() {
         if ($scope.model.valuables == "true") {
-            $scope.infoMessage = "OK. Vou te mostrar como adicioná-los a sua apólice em alguns passos";
+            UtilityFactory.infoMessage = "OK. Vou te mostrar como adicioná-los a sua apólice em alguns passos";
+            $scope.infoMessage = UtilityFactory.infoMessage;
             $("#info-bubble-row").show();
+            UtilityFactory.keepBubbleMessage = true;
         } else {
             $("#info-bubble-row").hide();
         }
