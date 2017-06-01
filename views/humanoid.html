@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="appController">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="row">
@@ -6,8 +6,12 @@
 					<img src="./imgs/plusoft_logo.png" alt="plusoft_logo.png" title="Plusoft" height="75px">
 				</div>
 				<div class="col-xs-2 text-right" style="margin-top: 17px;">
-					<button type="button" class="btn glyphicon glyphicon-repeat"></button>
-					<button type="button" class="btn glyphicon glyphicon-question-sign"></button>
+					<span class="black-tooltip" data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
+						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#myModal"></button>
+					</span>
+					<span data-toggle="tooltip" data-placement="bottom" title="Entrar em contato">
+						<button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#myModal2"></button>
+					</span>
 				</div>
 			</div>
 			<div class="row">
@@ -20,3 +24,53 @@
 		</div>
 	</nav>
 </header>
+
+<section>
+	<div class="modal fade-scale" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none;">
+                    <button type="button" class="close" data-dismiss="modal">
+                    	<span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                	<div class="text-center">
+	                	<h4 style="margin-bottom: 30px;">GOSTARIA DE RECOMEÇAR?</h4>
+	                	<p>Todas as suas respostas serão apagadas e você começará do início.</p>
+                	</div>
+                </div>
+                <div class="modal-footer" style="border: none;">
+                	<div class="col-xs-4 col-xs-offset-2">
+	                    <button type="button" style="padding: 0 35px;" class="cancel-buttons" data-dismiss="modal">Cancelar</button>
+                	</div>
+                	<div class="col-xs-4">
+	                    <button type="button" style="padding: 0 35px;" class="start-buttons" data-dismiss="modal" ng-click="restart()">Recomeçar</button>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title 2</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</section>

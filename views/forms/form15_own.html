@@ -15,32 +15,34 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-4">
-							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="debits" value="nope" ng-model="model.debits">
-							   <div class="option-inner">
-								  <h5>Nenhuma</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="debits" value="one" ng-model="model.debits">
-							   <div class="option-inner">
-								  <h5>Apenas uma</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="3" name="debits" value="more" ng-model="model.debits">
-							   <div class="option-inner">
-								  <h5>Sim, mais que uma</h5>
-								  <i></i>
-							   </div>
-							</label>
+							<form name="inputForm">
+								<label class="input-radio true">
+								   <input type="radio" tabindex="1" name="debits" value="nope" ng-model="model.debits" required>
+								   <div class="option-inner">
+									  <h5>Nenhuma</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="2" name="debits" value="one" ng-model="model.debits" required>
+								   <div class="option-inner">
+									  <h5>Apenas uma</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="3" name="debits" value="more" ng-model="model.debits" required>
+								   <div class="option-inner">
+									  <h5>Sim, mais que uma</h5>
+									  <i></i>
+								   </div>
+								</label>
+							</form>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateDebits()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateDebits()">Próximo</button>
 						</div>
 					</div>
 				</div>

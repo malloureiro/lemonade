@@ -81,11 +81,29 @@
     color: #fff;
 }
 
+.cancel-buttons {
+    font: 700 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;
+    height: 47px;
+    line-height: 47px;
+    padding: 0 70px;
+    background-color: #F7F7F7;
+    border: 1px solid #DADADA;
+    border-radius: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #4A4A4A;
+}
+
+.cancel-buttons:hover {
+    background-color: #e0dcdc;
+    border: 1px solid #dadada;
+}
+
 .start-buttons:hover {
     background-color: #d0036c;
 }
 
-.start-buttons:focus {
+.start-buttons:focus, .cancel-buttons:focus {
     outline: none;
 }
 
@@ -175,3 +193,66 @@
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
+
+select {
+    font: 700 1.4rem/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+    background-image: url(../imgs/select-caret-dark.png);
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding: 14px 35px 16px 15px;
+    color: #4A4A4A;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    text-indent: 0.01px;
+    text-overflow: '';
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none !important;
+}
+
+.black-tooltip + .tooltip  .tooltip-inner {
+    width: 100px;
+    height: 30px;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.fade-scale {
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  transition: all .25s linear;
+}
+
+.fade-scale.in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}

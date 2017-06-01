@@ -21,16 +21,17 @@ app.factory('DataHolderModel', function() {
             fire_alarm: false,
             burglar_alarm: false
         } ,
-        valuables: false,
-        activePolicy: false,
+        valuables: '',
+        activePolicy: '',
         policyPaymentType: '', // mortgage/none/insurer/dont_know
         property: {
             type: '', // condo/house
             buildingType: '', // studio/duplex/triplex
             use: '',
             size: '',
-            loan: false
+            loan: ''
         },
+        moveInDsate: '',
         debits: '' // nope/one/more
     }
 
@@ -51,16 +52,21 @@ app.factory('DataHolderModel', function() {
 
 app.controller('appController', function($scope, DataHolderModel) {
 
-    $scope.model = DataHolderModel.model;
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $scope.model = angular.copy(DataHolderModel.model);
     $scope.map = DataHolderModel.map;
     $scope.errorMessage = "";
-    $scope.buttonDisabled = true;
-    $scope.meetsRequirement = false;
     $scope.infoMessage = "";
 
-    var pageId = $("section > .container-fluid").attr("id");
+    $scope.restart = function() {
+        $scope.model = angular.copy(DataHolderModel.model);
+        window.location.href = "#start/1";
+
+    }
 
     $scope.goBackwards = function() {
+        var pageId = $("section > .container-fluid").attr("id");
         
         var previousPage = null;
         var routeTo = null;
@@ -476,7 +482,6 @@ app.controller('mapController', function($scope, DataHolderModel) {
         return v ? 'addClass' : 'removeClass';
     }
 
-
     $(document)
     .on('input', '.clearable', function() {
         $(this)[toggleClass(this.value)]('x');
@@ -485,9 +490,12 @@ app.controller('mapController', function($scope, DataHolderModel) {
         $(this)[toggleClass(this.offsetWidth-18 < e.clientX -this.getBoundingClientRect().left)]('onX');   
     })
     .on('click', '.onX', function() {
-        $(this).removeClass('x onX').val("");
+        $(this).removeClass('x onX');
+        $(this).val("");
         $('.container-map').hide();
         $(".error-message").hide();
+        // Update model
+        $scope.model.userAddress.formatted_address = "";
     });
 });
   

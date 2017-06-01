@@ -15,32 +15,34 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-4 col-xs-offset-4">
-							<label class="input-radio true">
-							   <input type="radio" tabindex="1" name="building_type" value="studio" ng-model="model.property.buildingType">
-							   <div class="option-inner">
-								  <h5>Studio</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="2" name="building_type" value="duplex" ng-model="model.property.buildingType">
-							   <div class="option-inner">
-								  <h5>Duplex</h5>
-								  <i></i>
-							   </div>
-							</label>
-							<label class="input-radio false">
-							   <input type="radio" tabindex="3" name="building_type" value="triplex" ng-model="model.property.buildingType">
-							   <div class="option-inner">
-								  <h5>Triplex</h5>
-								  <i></i>
-							   </div>
-							</label>
+							<form name="inputForm">
+								<label class="input-radio true">
+								   <input type="radio" tabindex="1" name="building_type" value="studio" ng-model="model.property.buildingType" required>
+								   <div class="option-inner">
+									  <h5>Studio</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="2" name="building_type" value="duplex" ng-model="model.property.buildingType" required>
+								   <div class="option-inner">
+									  <h5>Duplex</h5>
+									  <i></i>
+								   </div>
+								</label>
+								<label class="input-radio false">
+								   <input type="radio" tabindex="3" name="building_type" value="triplex" ng-model="model.property.buildingType" required>
+								   <div class="option-inner">
+									  <h5>Triplex</h5>
+									  <i></i>
+								   </div>
+								</label>
+							</form>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 text-center">
-							<button class="start-buttons" ng-click="validateBuildingType()">Próximo</button>
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateBuildingType()">Próximo</button>
 						</div>
 					</div>
 				</div>
