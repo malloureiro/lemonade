@@ -1,4 +1,4 @@
-var app = angular.module('Lemonade', ['ngRoute']);
+var app = angular.module('Plusoft', ['ngRoute', 'ngMaterial']);
 
 app.config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -84,23 +84,23 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider, $loc
 */
 
 var pageFlow = new Map();
-pageFlow.set('form-1', '#start/1');
-pageFlow.set('form-2', '#start/2');
-pageFlow.set('form-3', '#start/3');
-pageFlow.set('form-4', '#start/4');
-pageFlow.set('form-5', '#start/5');
-pageFlow.set('form-6', '#start/6');
-pageFlow.set('form-7', '#start/7');
-pageFlow.set('form-8', '#start/8');
-pageFlow.set('form-9', '#start/9');
-pageFlow.set('form-10', '#start/10');
-pageFlow.set('form-11', '#start/11');
-pageFlow.set('form-12', '#start/12');
-pageFlow.set('form-13', '#start/13');
-pageFlow.set('form-14', '#start/14');
-pageFlow.set('form-15', '#start/15');
-pageFlow.set('form-16', '#start/16');
-pageFlow.set('form-final', '#final');
+pageFlow.set('form-1', '/start/1');
+pageFlow.set('form-2', '/start/2');
+pageFlow.set('form-3', '/start/3');
+pageFlow.set('form-4', '/start/4');
+pageFlow.set('form-5', '/start/5');
+pageFlow.set('form-6', '/start/6');
+pageFlow.set('form-7', '/start/7');
+pageFlow.set('form-8', '/start/8');
+pageFlow.set('form-9', '/start/9');
+pageFlow.set('form-10', '/start/10');
+pageFlow.set('form-11', '/start/11');
+pageFlow.set('form-12', '/start/12');
+pageFlow.set('form-13', '/start/13');
+pageFlow.set('form-14', '/start/14');
+pageFlow.set('form-15', '/start/15');
+pageFlow.set('form-16', '/start/16');
+pageFlow.set('form-final', '/final');
     
 // Fluxo de exibição para seleção de imóvel 'Alugado'
 var renterPageFlow = ['form-1', 'form-2', 'form-3', 'form-4', 'form-5', 'form-6', 'form-final'];

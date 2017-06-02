@@ -1,3 +1,8 @@
+.sidenav-btn {
+    margin-top: 27px;
+    cursor: pointer;
+}
+
 .btn {
 	background-color: transparent;
 }
@@ -38,6 +43,7 @@
 	font-size: 90px;
 	color: #DADADA;
 	cursor: pointer;
+    outline: none;
 }
 
 .start-container {
@@ -46,6 +52,11 @@
 
 .start-container .row {
 	padding: 20px;
+}
+
+.start-container .row h3 {
+    font: 400 36px/50px "Merriweather",Georgia,serif;
+    color: #4A4A4A;
 }
 
 .start-container h3 {
@@ -255,4 +266,22 @@ select {
     /* To center horizontally */
     margin: 0 auto;
     pointer-events:all;
+}
+
+.mobile-menu {
+    background: #313131;
+}
+
+.mobile-menu-item {
+    color: #fff;
+    cursor: pointer;
+}
+
+.mobile-menu-item:hover {
+    color: #dadada;
+}
+
+.close {
+    color: #fff;
+    opacity: 0.8;
 }

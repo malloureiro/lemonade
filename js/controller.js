@@ -80,7 +80,7 @@ app.factory('UtilityFactory', function() {
     return util;
 })
 
-app.controller('appController', function($scope, DataHolderModel, UtilityFactory) {
+app.controller('appController', function($scope, $location, $mdSidenav, DataHolderModel, UtilityFactory) {
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -88,21 +88,9 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
     $scope.model = DataHolderModel.model;
     $scope.map = $scope.model.map;
     $scope.errorMessage = "";
-    /*$scope.infoMessage = "";*/
-
-    console.log(UtilityFactory.keepBubbleMessage);
-
-    $scope.clearContactForm = function() {
-        DataHolderModel.contactUs.resetData();
-    }
-
-    $scope.restart = function() {
-        DataHolderModel.model.resetData();
-        window.location.href = "#start/1";
-    }
+    $scope.infoMessage = "";
 
     $scope.goBackwards = function() {
-
         var pageId = $("section > .container-fluid").attr("id");
 
         var previousPage = null;
@@ -112,7 +100,7 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             idx = renterPageFlow.indexOf(pageId);
             previousPage = renterPageFlow[idx-1];
             routeTo = pageFlow.get(previousPage);
-            window.location.href = routeTo;
+            $location.url(routeTo);
 
         } else if ($scope.model.ownership == "owner") {
             routeTo = '#start/3';
@@ -187,18 +175,18 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             if (previousPage == 'form-4') {
                 hideRoommatesOption();
             }
-            window.location.href = routeTo;
+            $location.url(routeTo);
         } else {
             // Common routes
             switch(pageId) {
                 case 'form-2':
-                    window.location.href = '#start/1';
+                    $location.url('/start/1');
                     break;
                 case 'form-3':
-                    window.location.href = '#start/2';
+                    $location.url('/start/2');
                     break;
                 default:
-                    window.location.href = '#start/1';
+                    $location.url('/start/1');
             }
         }
 
@@ -220,7 +208,7 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
                 $(".error-message").show();
                 return;
             }
-            window.location.href =  '#start/2';
+            $location.url('/start/2');
         }
     }
 
@@ -233,7 +221,7 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
         }
         if (locationInput) {
             if ($scope.model.userAddress.isValid) {
-                window.location.href =  '#start/3';
+                $location.url('/start/3');
             } else {
                 // Adicionando validação em caso de evento 'place_changed' não disparado
                 $scope.errorMessage = "O endereço informado não é válido";
@@ -248,55 +236,54 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             $scope.model.ownership = input;
 
             if (input == 'renter') {
-                window.location.href = "#start/4";
+                $location.url('/start/4');
                 $("#roommates-option").show();
             } else {
-                window.location.href = "#start/7";
+                $location.url('/start/7');
             }
         }
     }
 
     $scope.validateOptionals = function() {
-        window.location.href = "#start/5";
+        $location.url('/start/5');
     }
 
     $scope.validateValuables = function() {
         if ($scope.model.ownership == "renter") {
-            window.location.href = "#start/6";
+            $location.url('/start/6');
         }
 
         if ($scope.model.ownership == "owner") {
-            window.location.href = "#start/11";
+            $location.url('/start/11');
         }
     }
 
     $scope.validatePropertyType = function() {
         if ($scope.model.property.type == "condo") {
-            window.location.href = "#start/10";
+            $location.url('/start/10');
         } else {
-            window.location.href = "#start/8";
+            $location.url('/start/8');
         }
-        
     }
 
     $scope.validateBuildingType = function() {
-        window.location.href = "#start/9";
+        $location.url('/start/9');
     }
 
     $scope.validatePropertyUseType = function() {
         if ($scope.model.property.use == "move") {
-            window.location.href = "#start/13";
+            $location.url('/start/13');
         } else {
-            window.location.href = "#start/10";
+            $location.url('/start/10');
         }
     }
 
     $scope.validateActivePolicy = function() {
-        window.location.href = "#final";
+        $location.url('/final');
 
         if ($scope.model.ownership == "owner") {
             if ($scope.model.property.type == "house") {
-                window.location.href = "#start/15";
+                $location.url('/start/15');
             }
         }
     }
@@ -308,7 +295,7 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             $(".error-message").show();
             return;
         }
-        window.location.href = "#start/4";
+        $location.url('/start/4');
         hideRoommatesOption();
     }
 
@@ -316,16 +303,16 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
         if ($scope.model.ownership == "owner") {
             if ($scope.model.property.type == "condo") {
                 if ($scope.model.property.loan == "true") {
-                    window.location.href = "#start/12";
+                    $location.url('/start/12');
                 } else {
-                    window.location.href = "#start/14";
+                    $location.url('/start/14');
                 }
             }
             if ($scope.model.property.type == "house") {
                 if ($scope.model.property.loan == "true") {
-                    window.location.href = "#start/12";
+                    $location.url('/start/12');
                 } else {
-                    window.location.href = "#start/6";
+                    $location.url('/start/6');
                 }
             }
         }
@@ -336,18 +323,18 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             if ($scope.model.property.type == "condo") {
                 if ($scope.model.property.loan == "true") {
                     if ($scope.model.policyPaymentType == "dont_know") {
-                        window.location.href = "#start/14";
+                        $location.url('/start/14');
                     } else {
-                        window.location.href = "#final";
+                        $location.url('/final');
                     }
                 }
             }
             if ($scope.model.property.type == "house") {
                 if ($scope.model.property.loan == "true") {
                     if ($scope.model.policyPaymentType == "dont_know") {
-                        window.location.href = "#start/6";
+                        $location.url('/start/6');
                     } else {
-                        window.location.href = "#start/15";
+                        $location.url('/start/15');
                     }
                 }
             }
@@ -355,15 +342,15 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
     }
 
     $scope.validateDebits = function() {
-        window.location.href = "#start/16";
+        $location.url('/start/16');
     }
 
     $scope.validateTimeToMove = function() {
-        window.location.href = "#start/10";
+        $location.url('/start/10');
     }
 
     $scope.validateCpf = function() {
-        window.location.href = "#final";
+        $location.url('/final');
     }
 
     $scope.roommateChange = function() {
@@ -421,6 +408,19 @@ app.controller('appController', function($scope, DataHolderModel, UtilityFactory
             $(el).removeClass("col-xs-10 col-xs-offset-2");
             $(el).addClass("col-xs-6 col-xs-offset-3");
         }, 10);
+    }
+
+    $scope.toggleLeftMenu = function() {
+        $mdSidenav("left").toggle();
+    }
+
+    $scope.clearContactForm = function() {
+        DataHolderModel.contactUs.resetData();
+    }
+
+    $scope.restart = function() {
+        DataHolderModel.model.resetData();
+        $location.url('/start/1');
     }
 
     // Evento no input text do Form 1

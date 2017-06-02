@@ -3,7 +3,7 @@
 <section>
 	<div id="form-final" class="container-fluid">
 		<div class="row">
-			<div class="col-xs-1 vcenter" style="background-color: blue;">
+			<div class="col-xs-1 vcenter">
 				<i class="glyphicon glyphicon-chevron-left back-icon" ng-click="goBackwards()"></i>
 			</div>
 			<div class="col-xs-10 vcenter">
@@ -13,9 +13,40 @@
 							<h3>Ótimo! Vamos enviá-lo uma cotação</h3>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-xs-4 col-xs-offset-3">
+							<label class="input-wrap email">
+								<input type="email" tabindex="1" name="user_email" class="is-empty" placeholder="E-MAIL">
+							</label>
+						</div>
+						<div class="col-xs-3">
+							<div class="input-wrap birthday">
+								<input type="number" min="1" tabindex="2" name="birth_month" placeholder="MM" value="" class="is-empty">
+								<input type="number" min="1" tabindex="3" name="birth_day" placeholder="DD" value="" class="is-empty">
+								<input type="number" min="1" tabindex="4" name="birth_year" placeholder="YYYY" value="" class="is-empty">
+							</div>
+						</div>
+					</div>
+					<div class="row" align="center">
+						<div class="col-xs-5 col-xs-offset-4">
+							<div class="cbx-tos">
+								<label class="input-checkbox inline">
+									<input type="checkbox" name="terms_of_service_approved" tabindex="5" value="on">
+									<div class="option-inner">
+										<h5>
+											<span>Eu concordo com os 
+												<a href="#" target="_blank">termos de serviço</a>
+											</span>
+										</h5>
+										<i></i>
+									</div>
+								</label>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-xs-1 vcenter" style="background-color: green;">
+			<div class="col-xs-1 vcenter">
 			</div>
 		</div>
 	</div>
