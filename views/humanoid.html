@@ -62,9 +62,6 @@
 	        <div class="modal-dialog vertical-align-center">
 	            <div class="modal-content">
 	                <div class="modal-header" style="border: none;">
-	                    <button type="button" class="close" data-dismiss="modal">
-	                    	<span aria-hidden="true">&times;</span>
-	                    </button>
 	                </div>
 	                <div class="modal-body">
 	                	<div class="text-center">
@@ -72,7 +69,7 @@
 		                	<p>Todas as suas respostas serão apagadas e você começará do início</p>
 	                	</div>
 	                </div>
-	                <div class="modal-footer" style="border: none;">
+	                <div class="modal-footer" style="border: none; padding: 0; padding-bottom: 30px;">
 	                	<div class="col-xs-4 col-xs-offset-2">
 		                    <button type="button" style="padding: 0 35px;" class="cancel-buttons" data-dismiss="modal">Cancelar</button>
 	                	</div>
@@ -92,16 +89,13 @@
 	        <div class="modal-dialog vertical-align-center">
 	            <div class="modal-content">
 	                <div class="modal-header" style="border: none;">
-	                    <button type="button" class="close" data-dismiss="modal" ng-click="clearContactForm()">
-	                    	<span aria-hidden="true">&times;</span>
-	                    </button>
 	                </div>
 	                <div class="modal-body">
 	                	<div class="text-center">
 		                	<h4 style="margin-bottom: 20px;">ENTRE EM CONTATO CONOSCO</h4>
 		                	<p style="margin-bottom: 40px;">Preencha suas informações, escreva sua mensagem e entraremos em contato com você</p>
 	                	</div>
-	                	<div class="form-group">
+	                	<div class="input-group">
 	                		<form name="inputForm">
 	                			<div class="row">
 	                				<div class="error-message" style="display: none;">
@@ -125,7 +119,7 @@
 	                		</form>
 	                	</div>
 	                </div>
-	                <div class="modal-footer" style="border: none;">
+	                <div class="modal-footer" style="border: none; padding: 0; padding-bottom: 30px;">
 	                	<div class="row" align="center">
 		                	<div class="col-xs-4 col-xs-offset-4">
 			                    <button type="button" style="padding: 0 35px;" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" class="start-buttons" data-dismiss="modal">Enviar</button>

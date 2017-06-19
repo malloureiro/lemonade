@@ -285,3 +285,9 @@ select {
     color: #fff;
     opacity: 0.8;
 }
+
+/* Removendo a borda azul padrão do bootstrap */
+.form-control:focus{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
