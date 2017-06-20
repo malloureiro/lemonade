@@ -16,10 +16,12 @@ app.factory('DataHolderModel', function() {
             pais: ''
         },
         map: {
-            autocomplete: null,
+            place: null,
             infowindow: null,
             marker: null,
-            map: null
+            map: null,
+            address: null,
+            isInitialized: false
         },
         ownership: '', // rent/own
         optionals: {
@@ -86,7 +88,6 @@ app.controller('appController', function($scope, $location, $mdSidenav, DataHold
 
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
-    $scope.map = $scope.model.map;
     $scope.errorMessage = "";
     $scope.infoMessage = "";
 
@@ -446,27 +447,38 @@ app.controller('mapController', function($scope, DataHolderModel) {
     $scope.mapModel = $scope.model.map;
     $scope.errorMessage = "";
 
+    if (!$scope.mapModel.isInitialized) {
+        $('.container-map').hide();
+    }
+
     angular.element(document).ready(function () {
         initMap();
     });
 
     function initMap() {
-
         var map = new google.maps.Map(document.getElementById('map'));
         var input = document.getElementById('locationInput');
 
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map);
 
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-            map: map,
-            anchorPoint: new google.maps.Point(0, -20)
-        });
+        var marker, infowindow, place, address;
+
+        if ($scope.mapModel.isInitialized) {
+            place = $scope.mapModel.place;
+
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+
+            address = $scope.mapModel.address;
+
+            marker = defineMarker(map, place);
+            infowindow = defineInfoWindow(map, marker, place, address);
+        }
 
         autocomplete.addListener('place_changed', function() {
-            
-            var place = autocomplete.getPlace();
+            place = autocomplete.getPlace();
+
             if (!place.geometry) {
                 $('.container-map').hide();
                 $scope.errorMessage = "O endereço informado não é válido";
@@ -476,6 +488,7 @@ app.controller('mapController', function($scope, DataHolderModel) {
                 $scope.$apply();
                 return;
             } else {
+
                 $(".error-message").hide();
                 $scope.model.userAddress.formatted_address = place.formatted_address;
                 
@@ -486,11 +499,17 @@ app.controller('mapController', function($scope, DataHolderModel) {
 
                     $scope.$apply();
                     return;
+
                 } else {
                     $('.container-map').show();
+                    $(".error-message").hide();
+                    
                     google.maps.event.trigger(map, 'resize');
 
-                    $(".error-message").hide();
+                    // If the place has a geometry, then present it on a map.
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+
                     $scope.model.userAddress.logradouro = place.address_components[0].long_name;
                     $scope.model.userAddress.numero = place.address_components[1].long_name;
                     $scope.model.userAddress.bairro = place.address_components[2].long_name;
@@ -500,24 +519,6 @@ app.controller('mapController', function($scope, DataHolderModel) {
                     $scope.model.userAddress.cep = place.address_components[7].long_name;
                     $scope.model.userAddress.isValid = true;
 
-                    // If the place has a geometry, then present it on a map.
-                    if (place.geometry.viewport) {
-                        map.fitBounds(place.geometry.viewport);
-                    } else {
-                        map.setCenter(place.geometry.location);
-                        map.setZoom(17);
-                    }
-                    marker.setIcon(({
-                        url: place.icon,
-                        size: new google.maps.Size(71, 71),
-                        origin: new google.maps.Point(0, 0),
-                        anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(35, 35)
-                    }));
-                    marker.setPosition(place.geometry.location);
-                    marker.setVisible(true);
-
-                    var address = '';
                     if (place.address_components) {
                         address = [
                           (place.address_components[0] && place.address_components[0].short_name || ''),
@@ -525,16 +526,43 @@ app.controller('mapController', function($scope, DataHolderModel) {
                           (place.address_components[2] && place.address_components[2].short_name || '')
                         ].join(' ');
                     }
-
-                    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-                    infowindow.open(map, marker);
+                    $scope.mapModel.address = address;
                 }
             }
+            $scope.mapModel.isInitialized = true;
+            marker = defineMarker(map, place);
+            infowindow = defineInfoWindow(map, marker, place, address);
+
             $scope.mapModel.infowindow = infowindow;
             $scope.mapModel.marker = marker;
-            $scope.mapModel.autocomplete = autocomplete;
+            $scope.mapModel.place = place;
             $scope.mapModel.map = map;
         });
+    }
+
+    function defineMarker(map, place) {
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -20)
+        });
+
+        marker.setIcon(({
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(35, 35)
+        }));
+        marker.setPosition(place.geometry.location);
+        marker.setVisible(true);
+        return marker;
+    }
+
+    function defineInfoWindow(map, marker, place, address) {
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+        infowindow.open(map, marker);
+        return infowindow;
     }
 
     /*
