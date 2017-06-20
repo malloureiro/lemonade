@@ -435,6 +435,12 @@ input[type="email"].is-empty:focus {
 }
 
 /* Date input */
+        
+.input-wrap {
+    display: inline-block;
+    position: relative;
+    height: 47px;
+}
 
 .input-wrap.birthday {
     border: 1px solid #DADADA;
@@ -484,13 +490,41 @@ input[type="email"].is-empty:focus {
     -webkit-appearance:none;
 }
 
+input[type="number"] {
+    -webkit-transition: box-shadow .2s;
+    -moz-transition: box-shadow .2s;
+    -o-transition: box-shadow .2s;
+    transition: box-shadow 0.2s;
+    font: 700 1.4rem/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+    color: #4A4A4A;
+    border: 1px #DADADA solid;
+    padding: 14px 15px;
+    resize: none;
+    -webkit-appearance: none;
+    -moz-appearance:textfield;
+}
+
 .input-wrap.birthday input[type="number"]+input[type="number"] {
     border-left: 0;
     margin-left: 0;
 }
 
+.input-wrap.birthday input[type="number"][name="birth_day"] {
+    width: 50px;
+    border-right: 1px solid #DADADA;
+    /*border-radius: 0 5px 5px 0;*/
+}
+
+.input-wrap.birthday input[type="number"][name="birth_month"] {
+    width: 50px;
+    border-right: 1px solid #DADADA;
+  /*  border-radius: 0 5px 5px 0;*/
+    -moz-appearance:textfield;
+}
+
 .input-wrap.birthday input[type="number"][name="birth_year"] {
-    width: 60px;
+    width: 65px;
     border-right: 0;
     border-radius: 0 5px 5px 0;
 }
@@ -500,4 +534,11 @@ input[type="number"].is-empty:focus {
     -webkit-box-shadow: 0 0 0 1px #FF0083 inset;
     -moz-box-shadow: 0 0 0 1px #FF0083 inset;
     box-shadow: 0 0 0 1px #FF0083 inset;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

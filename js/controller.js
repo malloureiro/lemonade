@@ -4,6 +4,10 @@ app.factory('DataHolderModel', function() {
         userName: '',
         userSurname: '',
         cpf: '',
+        email: '',
+        birth_day: '',
+        birth_month: '',
+        birth_year: '',
         userAddress: {
             isValid: false,
             formatted_address: '',
@@ -41,7 +45,8 @@ app.factory('DataHolderModel', function() {
         },
         moveInDate: '',
         debits: '', // nope/one/more
-        
+        agreedToTerms: false,
+
         resetData : function() {
             return model = angular.copy(default_model, model);
         }
@@ -83,8 +88,6 @@ app.factory('UtilityFactory', function() {
 })
 
 app.controller('appController', function($scope, $location, $mdSidenav, DataHolderModel, UtilityFactory) {
-
-    $('[data-toggle="tooltip"]').tooltip();
 
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
@@ -436,7 +439,11 @@ app.controller('appController', function($scope, $location, $mdSidenav, DataHold
         if ($("input[name='ownership']:checked").val()) {
             $scope.meetsRequirement = true;
         }
-    });    
+    });
+
+    angular.element(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
 });
 

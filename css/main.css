@@ -1,6 +1,14 @@
+.header-bar {
+    background-color: #fdfdfd;
+}
+
 .sidenav-btn {
     margin-top: 27px;
     cursor: pointer;
+}
+
+.sidenav-btn img {
+    outline: none;
 }
 
 .btn {
@@ -226,13 +234,6 @@ select {
    box-shadow: none !important;
 }
 
-.black-tooltip + .tooltip  .tooltip-inner {
-    width: 100px;
-    height: 30px;
-    font-size: 13px;
-    padding: 5px;
-}
-
 .fade-scale {
   transform: scale(0);
   opacity: 0;
@@ -284,6 +285,7 @@ select {
 .close {
     color: #fff;
     opacity: 0.8;
+    outline: none;
 }
 
 /* Removendo a borda azul padrão do bootstrap */

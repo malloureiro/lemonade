@@ -1,7 +1,7 @@
 <header>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
 					<img src="./imgs/sidenav-btn.png" alt="sidenav-btn.png" ng-click="toggleLeftMenu()">
 				</div>
@@ -9,7 +9,7 @@
 					<img src="./imgs/plusoft_logo.png" alt="plusoft_logo.png" title="Plusoft" height="75px">
 				</div>
 				<div class="col-xs-2 text-right" style="margin-top: 17px;">
-					<span class="black-tooltip" data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
+					<span data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
 						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#restartModal"></button>
 					</span>
 					<span data-toggle="tooltip" data-placement="bottom" title="Entrar em contato">
@@ -28,32 +28,33 @@
 	</nav>
 </header>
 
+<!-- Menu Lateral -->
 <section id="sidenavMenu" layout="column" hidden="true" ng-cloak>
-		<section layout="row" flex>
-			<md-sidenav layout="column" style="z-index: 9999;" class="md-sidenav-left mobile-menu" md-component-id="left" md-disable-backdrop md-whiteframe="4">
-				<md-content layout-margin class="mobile-menu">
-					<div style="border: none;">
-	                    <button type="button" class="close" ng-click="toggleLeftMenu()">
-	                    	<span aria-hidden="true">&times;</span>
-	                    </button>
-	                </div>
-					<md-list>
-						<md-list-item class="mobile-menu-item">
-							<span>Home</span>
-						</md-list-item>
-						<md-list-item class="mobile-menu-item">
-							<span>Fundação</span>
-						</md-list-item>
-						<md-list-item class="mobile-menu-item">
-							<span>FAQ</span>
-						</md-list-item>
-						<md-list-item class="mobile-menu-item">
-							<span>Blog</span>
-						</md-list-item>
-					</md-list>
-				</md-content>
-			</md-sidenav>
-		</section>
+	<section layout="row" flex>
+		<md-sidenav layout="column" style="z-index: 9999;" class="md-sidenav-left mobile-menu" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+			<md-content layout-margin class="mobile-menu">
+				<div style="border: none;">
+                    <button type="button" class="close" ng-click="toggleLeftMenu()">
+                    	<span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+				<md-list>
+					<md-list-item class="mobile-menu-item">
+						<span>Home</span>
+					</md-list-item>
+					<md-list-item class="mobile-menu-item">
+						<span>Fundação</span>
+					</md-list-item>
+					<md-list-item class="mobile-menu-item">
+						<span>FAQ</span>
+					</md-list-item>
+					<md-list-item class="mobile-menu-item">
+						<span>Blog</span>
+					</md-list-item>
+				</md-list>
+			</md-content>
+		</md-sidenav>
+	</section>
 </section>
 
 <section>

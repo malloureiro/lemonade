@@ -13,35 +13,42 @@
 							<h3>Ótimo! Vamos enviá-lo uma cotação</h3>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-4 col-xs-offset-3">
-							<label class="input-wrap email">
-								<input type="email" tabindex="1" name="user_email" class="is-empty" placeholder="E-MAIL">
-							</label>
-						</div>
-						<div class="col-xs-3">
-							<div class="input-wrap birthday">
-								<input type="number" min="1" tabindex="2" name="birth_month" placeholder="MM" value="" class="is-empty">
-								<input type="number" min="1" tabindex="3" name="birth_day" placeholder="DD" value="" class="is-empty">
-								<input type="number" min="1" tabindex="4" name="birth_year" placeholder="YYYY" value="" class="is-empty">
-							</div>
-						</div>
-					</div>
-					<div class="row" align="center">
-						<div class="col-xs-5 col-xs-offset-4">
-							<div class="cbx-tos">
-								<label class="input-checkbox inline">
-									<input type="checkbox" name="terms_of_service_approved" tabindex="5" value="on">
-									<div class="option-inner">
-										<h5>
-											<span>Eu concordo com os 
-												<a href="#" target="_blank">termos de serviço</a>
-											</span>
-										</h5>
-										<i></i>
-									</div>
+					<form name="inputForm">
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-3">
+								<label class="input-wrap email">
+									<input type="email" tabindex="1" name="user_email" class="is-empty" placeholder="E-MAIL" ng-model="model.email" required>
 								</label>
 							</div>
+							<div class="col-xs-3">
+								<div class="input-wrap birthday">
+									<input type="number" tabindex="2" name="birth_day" placeholder="DD" class="is-empty" value="" ng-model="model.birth_day" required>
+									<input type="number" tabindex="3" name="birth_month" placeholder="MM" class="is-empty" value="" ng-model="model.birth_month" required>
+									<input type="number" tabindex="4" name="birth_year" placeholder="AAAA" class="is-empty" value="" ng-model="model.birth_year" required>
+								</div>
+							</div>
+						</div>
+						<div class="row" align="center" style="padding: 0;">
+							<div class="col-xs-5 col-xs-offset-4">
+								<div class="cbx-tos">
+									<label class="input-checkbox inline">
+										<input type="checkbox" name="terms_of_service_approved" tabindex="5" value="on" ng-model="model.agreedToTerms" required>
+										<div class="option-inner">
+											<h5>
+												<span>Eu concordo com os 
+													<a href="#" target="_blank">termos de serviço</a>
+												</span>
+											</h5>
+											<i></i>
+										</div>
+									</label>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" ng-click="validateOwnership()">Próximo</button>
 						</div>
 					</div>
 				</div>
