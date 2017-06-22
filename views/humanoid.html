@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="isLastPage">
 		<div class="container-fluid">
 			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
@@ -26,6 +26,35 @@
 			</div>
 		</div>
 	</nav>
+
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="!isLastPage">
+		<div class="container-fluid">
+			<div class="row header-bar">
+				<div class="col-xs-1 sidenav-btn">
+					<img src="./imgs/sidenav-btn.png" alt="sidenav-btn.png" ng-click="toggleLeftMenu()">
+				</div>
+				<div class="col-xs-9">
+					<img src="./imgs/plusoft_logo.png" alt="plusoft_logo.png" title="Plusoft" height="75px">
+				</div>
+				<div class="col-xs-2 text-right" style="margin-top: 17px;">
+					<span data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
+						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#restartModal"></button>
+					</span>
+					<span data-toggle="tooltip" data-placement="bottom" title="Entrar em contato">
+						<button type="button" class="btn glyphicon glyphicon-question-sign" data-toggle="modal" data-target="#contactUsModal"></button>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<div class="humanoid">
+						<img src="./imgs/Amanda.jpg" alt="Amanda.jpg" title="Amanda" height="75px">
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
 </header>
 
 <!-- Menu Lateral -->

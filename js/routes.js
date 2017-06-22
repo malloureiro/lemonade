@@ -74,6 +74,14 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider, $loc
        templateUrl: "views/forms/form-final.html",
        controller: 'appController'
       })
+      .when('/process', {
+       templateUrl: "views/forms/processing.html",
+       controller: 'appController'
+      })
+      .when('/result', {
+       templateUrl: "views/forms/result.html",
+       controller: 'appController'
+      })
       .otherwise({ redirectTo: '/' });
 
       $locationProvider.hashPrefix('');
@@ -81,6 +89,7 @@ app.config(['$routeProvider','$locationProvider', function ($routeProvider, $loc
 
 /*
       OBJETOS DE CONTROLE DE NAVEGAÇÃO DE TELA
+      ID da página x rota
 */
 
 var pageFlow = new Map();
@@ -101,6 +110,7 @@ pageFlow.set('form-14', '/start/14');
 pageFlow.set('form-15', '/start/15');
 pageFlow.set('form-16', '/start/16');
 pageFlow.set('form-final', '/final');
+pageFlow.set('process', '/process');
     
 // Fluxo de exibição para seleção de imóvel 'Alugado'
 var renterPageFlow = ['form-1', 'form-2', 'form-3', 'form-4', 'form-5', 'form-6', 'form-final'];

@@ -1,0 +1,106 @@
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="process" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter">
+				<i class="glyphicon glyphicon-chevron-left back-icon" ng-click="goBackwards()"></i>
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<h3>Aguarde um segundo enquanto <br> calculamos uma cotação</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3 text-center">
+							<p>timer count: {{determinateValue}}</p>
+							<!-- <p>
+								<i class="fa fa-check u-stars" aria-hidden="true" ng-hide="hideRate5"></i>
+								{{processMsg}}
+							</p> -->
+							<md-progress-linear class="md-primary" md-mode="determinate" value="{{determinateValue}}"></md-progress-linear>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8 col-xs-offset-3">
+							<div class="row padding-0" ng-hide="hideRate1">
+								<div class="col-xs-7">
+									<span class="rating-description">Conservação do Edifício</span>
+								</div>
+								<div>
+									<div class="u-stars">
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+		                                <i class="fa fa-star-o" aria-hidden="true"></i>
+	                              	</div>
+								</div>
+							</div>
+							<div class="row padding-0" ng-hide="hideRate2">
+								<div class="col-xs-7">
+									<span class="rating-description">Equipamentos de Segurança</span>
+								</div>
+								<div>
+									<div class="u-stars">
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star-o" aria-hidden="true"></i>
+	                              	</div>
+								</div>
+							</div>
+							<div class="row padding-0" ng-hide="hideRate3">
+								<div class="col-xs-7">
+									<span class="rating-description">Localização</span>
+								</div>
+								<div>
+									<div class="u-stars">
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+		                                <i class="fa fa-star-o" aria-hidden="true"></i>
+		                                <i class="fa fa-star-o" aria-hidden="true"></i>
+	                              	</div>
+								</div>
+							</div>
+							<div class="row padding-0" ng-hide="hideRate4">
+								<div class="col-xs-7">
+									<span class="rating-description">Utilização do Imóvel</span>
+								</div>
+								<div>
+									<div class="u-stars">
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star-o" aria-hidden="true"></i>
+	                              	</div>
+								</div>
+							</div>
+							<div class="row padding-0" ng-hide="hideRate5">
+								<div class="col-xs-7">
+									<span class="rating-description">Proximidade ao Corpo de Bombeiros</span>
+								</div>
+								<div>
+									<div class="u-stars">
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+		                                <i class="fa fa-star" aria-hidden="true"></i>
+	                              	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter">
+			</div>
+		</div>
+	</div>
+</section>

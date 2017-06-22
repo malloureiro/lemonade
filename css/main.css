@@ -293,3 +293,21 @@ select {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+.rating-description {
+    font: 700 1.4rem/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+    color: #4A4A4A;
+}
+
+.u-stars {
+  color: #FF0083;
+  font-size: 20px;
+}
+
+.padding-0 {
+    padding: 0 !important;
+}
+
+.md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {
+    background-color: #f09418;
+}

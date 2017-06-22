@@ -87,12 +87,50 @@ app.factory('UtilityFactory', function() {
     return util;
 })
 
-app.controller('appController', function($scope, $location, $mdSidenav, DataHolderModel, UtilityFactory) {
+app.controller('appController', function($scope, $location, $interval, $q, $mdSidenav, DataHolderModel, UtilityFactory) {
 
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
     $scope.errorMessage = "";
     $scope.infoMessage = "";
+    $scope.isLastPage = false;
+    
+    // Variáveis de controle de exibição de ratings (página #process)
+    $scope.hideRate1 = $scope.hideRate2 = $scope.hideRate3 = $scope.hideRate4 = $scope.hideRate5 = true;
+    $scope.determinateValue = 10;
+    $scope.processMsg = "Conectando às bases de dados...";
+
+
+    /*
+        Controle de exibição de ratings (mock)
+    */
+    $scope.showRatings = function() {
+        $location.url('/process');
+
+        var i = 1;
+        $interval(function() {
+
+            $scope.determinateValue += 18;
+            /*if (i == 1) {
+                $scope.hideRate1 = false;
+            } else if (i == 2) {
+                $scope.hideRate2 = false;
+            } else if (i == 3) {
+                $scope.hideRate3 = false;
+            } else if (i == 4) {
+                $scope.hideRate4 = false;
+            } else if (i == 5) {
+                $scope.hideRate5 = false;
+                $scope.processMsg = "Análise concluída";
+            } 
+            if (i > 6) {
+                var routeTo = '/result';
+               // $location.url(routeTo);
+            }
+            */
+            i++;
+        }, 1000);
+    }
 
     $scope.goBackwards = function() {
         var pageId = $("section > .container-fluid").attr("id");
@@ -107,7 +145,7 @@ app.controller('appController', function($scope, $location, $mdSidenav, DataHold
             $location.url(routeTo);
 
         } else if ($scope.model.ownership == "owner") {
-            routeTo = '#start/3';
+            routeTo = '/start/3';
 
             if ($scope.model.property.type == "condo") {
                 idx = ownerCondoPageFlow.indexOf(pageId);
@@ -181,13 +219,18 @@ app.controller('appController', function($scope, $location, $mdSidenav, DataHold
             }
             $location.url(routeTo);
         } else {
-            // Common routes
+            /* 
+                Common routes
+            */
             switch(pageId) {
                 case 'form-2':
                     $location.url('/start/1');
                     break;
                 case 'form-3':
                     $location.url('/start/2');
+                    break;
+                case 'process':
+                    $location.url('/final');
                     break;
                 default:
                     $location.url('/start/1');
@@ -357,6 +400,10 @@ app.controller('appController', function($scope, $location, $mdSidenav, DataHold
         $location.url('/final');
     }
 
+    /*
+        :::::::::::::  Change Controls :::::::::::::
+    */
+
     $scope.roommateChange = function() {
         if ($scope.model.optionals.roommates) {
             $scope.infoMessage = "Os itens pessoais de seus colegas de quarto não são cobertos por esta apólice";
@@ -499,7 +546,7 @@ app.controller('mapController', function($scope, DataHolderModel) {
                 $(".error-message").hide();
                 $scope.model.userAddress.formatted_address = place.formatted_address;
                 
-                if (place.address_components.length < 8) {
+                if (place.address_components.length < 7) {
                     $scope.errorMessage = "O endereço informado deve conter informações de número e bairro";
                     $(".error-message").show();
                     $("#locationInput").val('');
@@ -521,9 +568,9 @@ app.controller('mapController', function($scope, DataHolderModel) {
                     $scope.model.userAddress.numero = place.address_components[1].long_name;
                     $scope.model.userAddress.bairro = place.address_components[2].long_name;
                     $scope.model.userAddress.cidade = place.address_components[3].long_name;
-                    $scope.model.userAddress.estado = place.address_components[5].short_name;
-                    $scope.model.userAddress.pais = place.address_components[6].long_name;
-                    $scope.model.userAddress.cep = place.address_components[7].long_name;
+                    $scope.model.userAddress.estado = place.address_components[4].short_name;
+                    $scope.model.userAddress.pais = place.address_components[5].long_name;
+                    $scope.model.userAddress.cep = place.address_components[6].long_name;
                     $scope.model.userAddress.isValid = true;
 
                     if (place.address_components) {
