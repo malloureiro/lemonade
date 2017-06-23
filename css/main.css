@@ -55,7 +55,7 @@
 }
 
 .start-container {
-	margin-top: 130px;
+	margin-top: 100px;
 }
 
 .start-container .row {
@@ -127,7 +127,7 @@
 }
 
 .start-buttons-disabled, .start-buttons-disabled:hover {
-    font: 700 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;;
+    font: 700 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;
     height: 47px;
     line-height: 47px;
     padding: 0 70px;
@@ -201,7 +201,7 @@
 /* style icon */
 .inner-addon .glyphicon {
   position: absolute;
-  padding: 10px;
+  padding: 13px;
   pointer-events: none;
 }
 
@@ -214,6 +214,7 @@
 .right-addon input { padding-right: 30px; }
 
 select {
+    cursor: pointer;
     font: 700 1.4rem/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
     background-image: url(../imgs/select-caret-dark.png);
     background-repeat: no-repeat;
@@ -311,3 +312,55 @@ select {
 .md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {
     background-color: #f09418;
 }
+
+.logo {
+    font: 200 36px/50px "Merriweather",Georgia,serif;
+    color: #4A4A4A;
+    cursor: pointer;
+    margin-right: 35px;
+}
+
+.logo:hover {
+    color: #6d6c6c;
+}
+
+.logo-link {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.price-circle {
+    width: 140px;
+    border: 1px solid #FF0083;
+    height: 140px;
+    border-radius: 100px;
+    padding: 10px;
+    display: inline-block;
+    margin-top: -65px;
+    background: #FF0083;
+    position: absolute;
+    margin-left: -60px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.md-datepicker-input {
+    min-width: 155px;
+}
+
+.md-datepicker-focused {
+    border-bottom-color: #FF0083 !important;
+}
+
+.md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator {
+    border: 1px solid #FF0083;
+}
+
+.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date 
+.md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator,
+ .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+    background: #FF0083;
+ }

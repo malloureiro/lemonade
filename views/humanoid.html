@@ -33,8 +33,11 @@
 				<div class="col-xs-1 sidenav-btn">
 					<img src="./imgs/sidenav-btn.png" alt="sidenav-btn.png" ng-click="toggleLeftMenu()">
 				</div>
-				<div class="col-xs-9">
+				<div class="col-xs-9" style="display:table;">
 					<img src="./imgs/plusoft_logo.png" alt="plusoft_logo.png" title="Plusoft" height="75px">
+						<a href="#" style="text-decoration: none;" class="logo-link">
+							<span class="logo">Plusoft</span>
+						</a>
 				</div>
 				<div class="col-xs-2 text-right" style="margin-top: 17px;">
 					<span data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
@@ -45,16 +48,8 @@
 					</span>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12 text-center">
-					<div class="humanoid">
-						<img src="./imgs/Amanda.jpg" alt="Amanda.jpg" title="Amanda" height="75px">
-					</div>
-				</div>
-			</div>
 		</div>
 	</nav>
-
 </header>
 
 <!-- Menu Lateral -->
@@ -125,7 +120,7 @@
 		                	<h4 style="margin-bottom: 20px;">ENTRE EM CONTATO CONOSCO</h4>
 		                	<p style="margin-bottom: 40px;">Preencha suas informações, escreva sua mensagem e entraremos em contato com você</p>
 	                	</div>
-	                	<div class="input-group">
+	                	<div>
 	                		<form name="inputForm">
 	                			<div class="row">
 	                				<div class="error-message" style="display: none;">
@@ -161,3 +156,51 @@
 	    </div>
 	</div>
 </section>
+
+<section>
+	<div class="modal fade-scale" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="vertical-alignment-helper">
+	        <div class="modal-dialog vertical-align-center">
+	            <div class="modal-content">
+	                <div class="modal-header" style="border: none;">
+	                </div>
+	                <div class="modal-body">
+	                	<div class="text-center">
+		                	<h4 style="margin-bottom: 20px;">INFORMAÇÕES DE CARTÃO DE CRÉDITO</h4>
+	                	</div>
+	                	<div >
+	                		<form name="inputForm">
+								<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
+		                			<div class="inner-addon left-addon">
+		                				<i class="glyphicon glyphicon-credit-card"></i>
+		                				<input type="text" name="payment-details" tabindex="1" class="form-control start-inputs" placeholder="NÚMERO DO CARTÃO" ng-model="contactModel.name" required>
+		                			</div>
+	                			</div>
+	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
+	                				<div class="inner-addon left-addon">
+		                				<i class="glyphicon glyphicon-calendar"></i>
+	                					<input type="text" name="payment-details" tabindex="2" class="form-control start-inputs" placeholder="MM/AA" ng-model="contactModel.email" required>
+		                			</div>
+	                			</div>
+	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 25px;">
+	                				<div class="inner-addon left-addon">
+		                				<i class="glyphicon glyphicon-lock"></i>
+	                					<input type="text" name="payment-details" tabindex="3" class="form-control start-inputs" placeholder="CVC" ng-model="contactModel.email" required>
+	                				</div>
+	                			</div>
+	                		</form>
+	                	</div>
+	                </div>
+	                <div class="modal-footer" style="border: none; padding: 0; padding-bottom: 30px;">
+	                	<div class="row" align="center">
+		                	<div class="col-xs-4 col-xs-offset-4">
+			                    <button type="button" style="padding: 0 35px;" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" class="start-buttons" data-dismiss="modal">Pagar</button>
+		                	</div>
+	                	</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+

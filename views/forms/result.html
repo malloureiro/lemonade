@@ -1,3 +1,51 @@
-<div>
-	ESTE EH A ÚLTIMA PÁGINA
-</div>
+<div ng-include="'views/humanoid.html'"></div>
+
+<section>
+	<div id="form-1" class="container-fluid">
+		<div class="row">
+			<div class="col-xs-1 vcenter">
+			</div>
+			<div class="col-xs-10 vcenter">
+				<div class="container start-container">
+					<div class="row padding-0">
+						<div class="col-xs-12 text-center">
+							<h3>Plusoft Seguros para {{ clientType }} </h3>
+						</div>
+					</div>
+					<div class="row text-center">
+						<div class="col-xs-6 col-xs-offset-3" style="margin-bottom: 50px;">
+							<!-- <span style="font-size: 16px;"> Av. Moreira César, 242 - Centro, Sorocaba - SP, Brasil </span> -->
+							<span style="font-size: 16px;"> {{clientAddress}} </span>
+						</div>
+					</div>
+					<div class="row text-center" style="margin-bottom: 50px;">
+						<div class="price-circle">
+							<div>
+								R$ 89,90
+							</div>
+							<div style="font-size: 15px; font-weight: lighter;">
+								por mês
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-2 col-xs-offset-4" style="height: 50px;" align="center">
+							<p style="font-size: 16px; font-weight: bold; margin-top:10%;">Data de Início</p>
+						</div>
+						<div class="col-xs-3 text-center">
+							<md-datepicker ng-model="ctrl.myDate" md-placeholder="Escolha uma data">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button class="start-buttons" data-toggle="modal" data-target="#paymentModal">Pagar R$ 89,90 / mês</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-1 vcenter">
+			</div>
+		</div>
+	</div>
+</section>
+

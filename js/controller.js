@@ -73,6 +73,7 @@ app.factory('DataHolderModel', function() {
         hideRate3: true,
         hideRate4: true,
         hideRate5: true,
+        flagIsLastPage: false,
         resetData: function() {
             return ratings = angular.copy(ratings_default, ratings);
         }
@@ -101,16 +102,36 @@ app.factory('UtilityFactory', function() {
     util_default.reset();
 
     return util;
-})
+});
+
+/*app.config(function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    $mdDateLocaleProvider.shortMonths = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    $mdDateLocaleProvider.days = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'];
+    $mdDateLocaleProvider.shortDays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom' ];
+});*/
 
 app.controller('appController', function($scope, $location, $route, $interval, $timeout, $mdSidenav, DataHolderModel, UtilityFactory) {
 
+    /*
+        Controles de exibição de páginas em comum
+    */
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
     $scope.errorMessage = "";
     $scope.infoMessage = "";
-    $scope.isLastPage = false;
 
+    /*
+        Controle de exibição da últma página (r#esult)
+    */
+    $scope.isLastPage = DataHolderModel.ratings.flagIsLastPage;
+    $scope.clientType = $scope.model.ownership == "renter" ? "Inquilinos" : "Proprietários";
+    $scope.clientAddress = $scope.model.userAddress.formatted_address;
+    
+
+    /*
+        Controles de exibição de Rating
+    */
     $scope.ratingsMessage = DataHolderModel.ratings.ratingsMessage;
     $scope.loadingValue = DataHolderModel.ratings.loadingValue;
     
@@ -146,6 +167,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
             if (i > 6) {
                 var routeTo = '/result';
                 $location.url(routeTo);
+                DataHolderModel.ratings.flagIsLastPage = true;
             }
             i++;
 
@@ -492,6 +514,10 @@ app.controller('appController', function($scope, $location, $route, $interval, $
 
     $scope.restart = function() {
         DataHolderModel.model.resetData();
+        $scope.start();
+    }
+
+    $scope.start = function() {
         $location.url('/start/1');
     }
 
