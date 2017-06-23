@@ -64,9 +64,25 @@ app.factory('DataHolderModel', function() {
     }
     contactUs_default.resetData();
 
+    var ratings = {};
+    var ratings_default = {
+        ratingsMessage: 'Conectando às bases de dados...',
+        loadingValue: 10,
+        hideRate1: true,
+        hideRate2: true,
+        hideRate3: true,
+        hideRate4: true,
+        hideRate5: true,
+        resetData: function() {
+            return ratings = angular.copy(ratings_default, ratings);
+        }
+    }
+    ratings_default.resetData();
+
     var DataHolderModel = {
         model,
-        contactUs
+        contactUs,
+        ratings
     };
 
     return DataHolderModel;
@@ -87,49 +103,54 @@ app.factory('UtilityFactory', function() {
     return util;
 })
 
-app.controller('appController', function($scope, $location, $interval, $q, $mdSidenav, DataHolderModel, UtilityFactory) {
+app.controller('appController', function($scope, $location, $route, $interval, $timeout, $mdSidenav, DataHolderModel, UtilityFactory) {
 
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
     $scope.errorMessage = "";
     $scope.infoMessage = "";
     $scope.isLastPage = false;
+
+    $scope.ratingsMessage = DataHolderModel.ratings.ratingsMessage;
+    $scope.loadingValue = DataHolderModel.ratings.loadingValue;
     
     // Variáveis de controle de exibição de ratings (página #process)
-    $scope.hideRate1 = $scope.hideRate2 = $scope.hideRate3 = $scope.hideRate4 = $scope.hideRate5 = true;
-    $scope.determinateValue = 10;
-    $scope.processMsg = "Conectando às bases de dados...";
+    $scope.hideRate1 = DataHolderModel.ratings.hideRate1;
+    $scope.hideRate2 = DataHolderModel.ratings.hideRate2;
+    $scope.hideRate3 = DataHolderModel.ratings.hideRate3;
+    $scope.hideRate4 = DataHolderModel.ratings.hideRate4;
+    $scope.hideRate5 = DataHolderModel.ratings.hideRate5;
 
-
-    /*
-        Controle de exibição de ratings (mock)
-    */
     $scope.showRatings = function() {
+        DataHolderModel.ratings.resetData();
+
         $location.url('/process');
 
         var i = 1;
         $interval(function() {
 
-            $scope.determinateValue += 18;
-            /*if (i == 1) {
-                $scope.hideRate1 = false;
+            DataHolderModel.ratings.loadingValue += 18;
+
+            if (i == 1) {
+                DataHolderModel.ratings.hideRate1 = false;
             } else if (i == 2) {
-                $scope.hideRate2 = false;
+                DataHolderModel.ratings.hideRate2 = false;
             } else if (i == 3) {
-                $scope.hideRate3 = false;
+                DataHolderModel.ratings.hideRate3 = false;
             } else if (i == 4) {
-                $scope.hideRate4 = false;
+                DataHolderModel.ratings.hideRate4 = false;
             } else if (i == 5) {
-                $scope.hideRate5 = false;
-                $scope.processMsg = "Análise concluída";
+                DataHolderModel.ratings.hideRate5 = false;
+                DataHolderModel.ratings.ratingsMessage = "Análise concluída";
             } 
             if (i > 6) {
                 var routeTo = '/result';
-               // $location.url(routeTo);
+                $location.url(routeTo);
             }
-            */
             i++;
-        }, 1000);
+
+            $route.reload();
+        }, 750, 7, true);
     }
 
     $scope.goBackwards = function() {
