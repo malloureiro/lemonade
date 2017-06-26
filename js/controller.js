@@ -80,10 +80,22 @@ app.factory('DataHolderModel', function() {
     }
     ratings_default.resetData();
 
+    var payment = {};
+    var payment_default = {
+        creditCard: '',
+        CVC: '',
+        validDate: '',
+        resetData: function() {
+            return payment = angular.copy(payment_default, payment);
+        }
+    }
+    payment_default.resetData();
+
     var DataHolderModel = {
         model,
         contactUs,
-        ratings
+        ratings,
+        payment
     };
 
     return DataHolderModel;
@@ -116,6 +128,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     /*
         Controles de exibição de páginas em comum
     */
+    $scope.paymentModel = DataHolderModel.payment;
     $scope.contactModel = DataHolderModel.contactUs;
     $scope.model = DataHolderModel.model;
     $scope.errorMessage = "";
@@ -514,6 +527,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
 
     $scope.restart = function() {
         DataHolderModel.model.resetData();
+        DataHolderModel.payment.resetData();
         $scope.start();
     }
 

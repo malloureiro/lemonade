@@ -121,7 +121,7 @@
 		                	<p style="margin-bottom: 40px;">Preencha suas informações, escreva sua mensagem e entraremos em contato com você</p>
 	                	</div>
 	                	<div>
-	                		<form name="inputForm">
+	                		<form name="contactForm">
 	                			<div class="row">
 	                				<div class="error-message" style="display: none;">
 										<div class="col-xs-offset-3 col-xs-6">
@@ -136,7 +136,7 @@
 	                				<input type="text" name="contact-us" tabindex="1" id="name" class="form-control start-inputs" placeholder="NOME COMPLETO" ng-model="contactModel.name" required>
 	                			</div>
 	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
-	                				<input type="text" name="contact-us" tabindex="2" id="address" class="form-control start-inputs" placeholder="E-MAIL" ng-model="contactModel.email" required>
+	                				<input type="email" name="contact-us" tabindex="2" id="address" class="form-control start-inputs" placeholder="E-MAIL" ng-model="contactModel.email" required>
 	                			</div>
 	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 25px;">
 	                				<textarea class="form-control" style="resize:none;" tabindex="3" rows="5" id="comment" placeholder="COMO PODEMOS TE AJUDAR?" ng-model="contactModel.message"></textarea>
@@ -147,7 +147,7 @@
 	                <div class="modal-footer" style="border: none; padding: 0; padding-bottom: 30px;">
 	                	<div class="row" align="center">
 		                	<div class="col-xs-4 col-xs-offset-4">
-			                    <button type="button" style="padding: 0 35px;" ng-disabled="inputForm.$invalid" ng-class="{'start-buttons-disabled': inputForm.$invalid}" class="start-buttons" data-dismiss="modal">Enviar</button>
+			                    <button type="button" style="padding: 0 35px;" ng-disabled="contactForm.$invalid" ng-class="{'start-buttons-disabled': contactForm.$invalid}" class="start-buttons" data-dismiss="modal" >Enviar</button>
 		                	</div>
 	                	</div>
 	                </div>
@@ -173,19 +173,19 @@
 								<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
 		                			<div class="inner-addon left-addon">
 		                				<i class="glyphicon glyphicon-credit-card"></i>
-		                				<input type="text" name="payment-details" tabindex="1" class="form-control start-inputs" placeholder="NÚMERO DO CARTÃO" ng-model="contactModel.name" required>
+		                				<input type="text" name="payment-details" tabindex="1" class="form-control start-inputs" placeholder="NÚMERO DO CARTÃO" ng-model="paymentModel.creditCard" required>
 		                			</div>
 	                			</div>
 	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 10px;">
 	                				<div class="inner-addon left-addon">
 		                				<i class="glyphicon glyphicon-calendar"></i>
-	                					<input type="text" name="payment-details" tabindex="2" class="form-control start-inputs" placeholder="MM/AA" ng-model="contactModel.email" required>
+	                					<input type="text" name="payment-details" tabindex="2" class="form-control start-inputs" placeholder="MM/AA" ng-model="paymentModel.validDate" required>
 		                			</div>
 	                			</div>
 	                			<div class="col-xs-8 col-xs-offset-2" style="padding-bottom: 25px;">
 	                				<div class="inner-addon left-addon">
 		                				<i class="glyphicon glyphicon-lock"></i>
-	                					<input type="text" name="payment-details" tabindex="3" class="form-control start-inputs" placeholder="CVC" ng-model="contactModel.email" required>
+	                					<input type="text" name="payment-details" tabindex="3" class="form-control start-inputs" placeholder="CVC" ng-model="paymentModel.CVC" required>
 	                				</div>
 	                			</div>
 	                		</form>

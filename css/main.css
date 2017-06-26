@@ -1,3 +1,17 @@
+.bg-gray {
+    background-color: #f5f3f3;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.pink-link {
+    color: #FF0083;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .header-bar {
     background-color: #fdfdfd;
 }
@@ -265,7 +279,6 @@ select {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
     width:inherit;
     height:inherit;
-    /* To center horizontally */
     margin: 0 auto;
     pointer-events:all;
 }
@@ -309,8 +322,8 @@ select {
     padding: 0 !important;
 }
 
-.md-progress-linear.md-default-theme .md-bar, md-progress-linear .md-bar {
-    background-color: #f09418;
+.font-16 {
+    font-size: 16px;
 }
 
 .logo {
@@ -347,6 +360,13 @@ select {
     flex-direction: column;
 }
 
+/*
+    Material Design Override
+*/
+.md-progress-linear.md-default-theme .md-bar, .md-progress-linear .md-bar {
+    background-color: #f09418;
+}
+
 .md-datepicker-input {
     min-width: 155px;
 }
@@ -364,3 +384,174 @@ select {
  .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
     background: #FF0083;
  }
+
+.covered-area {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.coverage-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.coverage-list > li,
+.coverages-list > li {
+    list-style: none;
+    list-style-image: none;
+}
+
+.coverage-list li.box {
+    width: 50%;
+    max-width: 400px;
+    flex-shrink: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.icn-peril {
+    width: 66px;
+    height: 63px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.icn-fire {
+    background: url(../imgs/icn-sprite-perils.png) 0 -62px;
+ }
+
+.icn-weather-1 {
+    background: url(../imgs/icn-sprite-perils.png) 0 -124px;
+}
+.icn-weather-2 {
+    background: url(../imgs/icn-sprite-perils.png) -130px -62px;
+}
+.icn-weather-3{
+    background: url(../imgs/icn-sprite-perils.png) 65px -62px;
+}
+.icn-crime {
+    background: url(../imgs/icn-sprite-perils.png) -65px 125px;
+}
+.icn-injury {
+    background: url(../imgs/icn-sprite-perils.png) 131px -188px;   
+}
+.icn-medical {
+    background: url(../imgs/icn-sprite-perils.png) 0 -188px;   
+}
+.icn-water {
+    background: url(../imgs/icn-sprite-perils.png) 0 0;   
+}
+.icn-earthquake {
+    background: url(../imgs/icn-sprite-perils.png) -65px 62px;   
+}
+.icn-dog-attack {
+    background: url(../imgs/icn-sprite-perils.png) 66px 0;   
+}
+.icn-flood {
+    background: url(../imgs/icn-sprite-perils.png) 131px 126px;   
+}
+.icn-roommates {
+    background: url(../imgs/icn-sprite-perils.png) 131px 0;   
+}
+.sml {
+    background-size: 261px 250px;
+}
+
+.question-far-down {
+    background: url(../imgs/icn-far-down.svg) center top no-repeat;
+    width: 74px;
+    height: 86px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.coverage-list li.box-white {
+    background-color: #fff;
+    text-align: center;
+    max-width: 360px;
+    height: 420px;
+    padding: 20px;
+    /*padding: 130px 30px 30px 30px;*/
+    margin: 20px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    border: 1px #DADADA solid;
+}
+
+.coverage-list li.box-white .price-toggles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 73px;
+    padding: 0 20px;
+    border-top: 3px #FF0083 solid;
+}
+
+.coverage-list li.box-white .price-toggles .btn-toggle {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #DADADA;
+    border-radius: 50%;
+    position: relative;
+    -webkit-transition: opacity .2s;
+    -moz-transition: opacity .2s;
+    -o-transition: opacity .2s;
+    transition: opacity 0.2s;
+}
+
+.coverage-list li.box-white .price-toggles .price {
+    font-size: 32px;
+    line-height: 70px;
+    font-weight: 700;
+    color: #4A4A4A;
+}
+
+.coverage-list li.box-white .price-toggles .btn-toggle.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.personal_property {
+    background: url(../imgs/icn-sprite-coverages.png) no-repeat -93px -278px;
+    margin-left: 35%;
+    background-size: 287px 359px;
+    width: 110px;
+    height: 100px;
+}
+
+.personal_liability {
+    background: url(../imgs/icn-sprite-coverages.png) no-repeat 12px -78px;
+    margin-left: 35%;
+    background-size: 287px 359px;
+    width: 110px;
+    height: 100px;
+}
+
+.loss_of_use {
+    background: url(../imgs/icn-sprite-coverages.png) no-repeat 11px -272px;
+    margin-left: 35%;
+    background-size: 287px 359px;
+    width: 110px;
+    height: 100px;
+}
+
+.medical {
+    background: url(../imgs/icn-sprite-coverages.png) no-repeat -70px -75px;
+    margin-left: 35%;
+    background-size: 287px 359px;
+    width: 110px;
+    height: 100px;
+}
