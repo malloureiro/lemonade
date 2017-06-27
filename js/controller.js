@@ -193,10 +193,10 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     */
     $scope.plusoftProductPrice = 50;
     $scope.plusoftFinalProductPrice = $scope.plusoftProductPrice;
-    $scope.personalPropertyPrice = 10;
-    $scope.personalLiabilityPrice = 100;
-    $scope.lossOfUsePrice = 3;
-    $scope.medicalPaymentsPrice = 1;
+    $scope.personalPropertyPrice = 10000;
+    $scope.personalLiabilityPrice = 100000;
+    $scope.lossOfUsePrice = 3000;
+    $scope.medicalPaymentsPrice = 1000;
     $scope.jewelryAddedPrice = 0;
     $scope.artAddedPrice = 0;
     $scope.bikeAddedPrice = 0;
@@ -205,8 +205,8 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     $(document)
     .on('click', '#toggleUPersonalProperty', function() {
         $("#toggleDPersonalProperty").removeClass("disabled");
-        $scope.personalPropertyPrice += 5;
-        if ($scope.personalPropertyPrice == 100) {
+        $scope.personalPropertyPrice += 5000;
+        if ($scope.personalPropertyPrice == 100000) {
             $("#toggleUPersonalProperty").addClass("disabled");
         }
         calcPrice("property", $scope.personalPropertyPrice, true);
@@ -214,17 +214,17 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     })
     .on('click', '#toggleDPersonalProperty', function() {
         $("#toggleUPersonalProperty").removeClass("disabled");
-        $scope.personalPropertyPrice -= 5;
-        if ($scope.personalPropertyPrice == 10) {
+        $scope.personalPropertyPrice -= 5000;
+        if ($scope.personalPropertyPrice == 10000) {
             $("#toggleDPersonalProperty").addClass("disabled");
         }
-        calcPrice("property", 5, false);
+        calcPrice("property", 5000, false);
         $scope.$apply();  
     })
     .on('click', '#toggleUPersonalLiability', function() {
         $("#toggleDPersonalLiability").removeClass("disabled");
-        $scope.personalLiabilityPrice += 10;
-        if ($scope.personalLiabilityPrice == 150) {
+        $scope.personalLiabilityPrice += 10000;
+        if ($scope.personalLiabilityPrice == 150000) {
             $("#toggleUPersonalLiability").addClass("disabled");
         }
         calcPrice("liability", $scope.personalLiabilityPrice, true);
@@ -232,17 +232,17 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     })
     .on('click', '#toggleDPersonalLiability', function() {
         $("#toggleUPersonalLiability").removeClass("disabled");
-        $scope.personalLiabilityPrice -= 10;
-        if ($scope.personalLiabilityPrice == 100) {
+        $scope.personalLiabilityPrice -= 10000;
+        if ($scope.personalLiabilityPrice == 100000) {
             $("#toggleDPersonalLiability").addClass("disabled");
         }
-        calcPrice("liability", 10, false);
+        calcPrice("liability", 10000, false);
         $scope.$apply();
     })
     .on('click', '#toggleULossPrice', function() {
         $("#toggleDLossPrice").removeClass("disabled");
-        $scope.lossOfUsePrice += 3;
-        if ($scope.lossOfUsePrice == 15) {
+        $scope.lossOfUsePrice += 3000;
+        if ($scope.lossOfUsePrice == 15000) {
             $("#toggleULossPrice").addClass("disabled");
         }
         calcPrice("lossOfUse", $scope.lossOfUsePrice, true);
@@ -250,17 +250,17 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     })
     .on('click', '#toggleDLossPrice', function() {
         $("#toggleULossPrice").removeClass("disabled");
-        $scope.lossOfUsePrice -= 3;
-        if ($scope.lossOfUsePrice == 3) {
+        $scope.lossOfUsePrice -= 3000;
+        if ($scope.lossOfUsePrice == 3000) {
             $("#toggleDLossPrice").addClass("disabled");
         }
-        calcPrice("lossOfUse", 3, false);
+        calcPrice("lossOfUse", 3000, false);
         $scope.$apply();  
     })
      .on('click', '#toggleUMedicalPrice', function() {
         $("#toggleDMedicalPrice").removeClass("disabled");
-        $scope.medicalPaymentsPrice += 1;
-        if ($scope.medicalPaymentsPrice == 20) {
+        $scope.medicalPaymentsPrice += 1000;
+        if ($scope.medicalPaymentsPrice == 20000) {
             $("#toggleUMedicalPrice").addClass("disabled");
         }
         calcPrice("medical", $scope.medicalPaymentsPrice, true);
@@ -268,11 +268,11 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     })
     .on('click', '#toggleDMedicalPrice', function() {
         $("#toggleUMedicalPrice").removeClass("disabled");
-        $scope.medicalPaymentsPrice -= 1;
-        if ($scope.medicalPaymentsPrice == 1) {
+        $scope.medicalPaymentsPrice -= 1000;
+        if ($scope.medicalPaymentsPrice == 1000) {
             $("#toggleDMedicalPrice").addClass("disabled");
         }
-        calcPrice("medical", 1, false);
+        calcPrice("medical", 1000, false);
         $scope.$apply();  
     })
     .on('click', '#item-main-action-jewelry', function() {

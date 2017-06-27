@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="true">
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="isLastPage">
 		<div class="container-fluid">
 			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
@@ -27,7 +27,7 @@
 		</div>
 	</nav>
 
-	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="false">
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="!isLastPage">
 		<div class="container-fluid">
 			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
