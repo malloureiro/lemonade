@@ -1,5 +1,5 @@
 <header>
-	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="isLastPage">
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="true">
 		<div class="container-fluid">
 			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
@@ -27,19 +27,24 @@
 		</div>
 	</nav>
 
-	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="!isLastPage">
+	<nav class="navbar navbar-default navbar-fixed-top" ng-hide="false">
 		<div class="container-fluid">
 			<div class="row header-bar">
 				<div class="col-xs-1 sidenav-btn">
 					<img src="./imgs/sidenav-btn.png" alt="sidenav-btn.png" ng-click="toggleLeftMenu()">
 				</div>
-				<div class="col-xs-9" style="display:table;">
+				<div class="col-xs-1">
 					<img src="./imgs/plusoft_logo.png" alt="plusoft_logo.png" title="Plusoft" height="75px">
-						<a href="#" style="text-decoration: none;" class="logo-link">
-							<span class="logo">Plusoft</span>
-						</a>
 				</div>
-				<div class="col-xs-2 text-right" style="margin-top: 17px;">
+				<div class="col-xs-2 col-xs-offset-3" style="margin-top: 17px;">
+					<a href="#" style="text-decoration: none;" class="logo-link">
+						<span class="logo">Plusoft</span>
+					</a>
+				</div>
+				<div class="col-xs-2 col-xs-offset-2" style="margin-left: 15% !important; margin-top: 17px;">
+					<button class="start-buttons" style="min-width: 26%; padding: 1px 17px;" data-toggle="modal" data-target="#paymentModal">Pagar R$ {{plusoftFinalProductPrice}} mês</button>
+				</div>
+				<div class="col-xs-2 text-right" style="width: 9% !important;margin-top: 17px;float: right;">
 					<span data-toggle="tooltip" data-placement="bottom" title="Recomeçar">
 						<button type="button" class="btn glyphicon glyphicon-repeat" data-toggle="modal" data-target="#restartModal"></button>
 					</span>

@@ -73,7 +73,6 @@ app.factory('DataHolderModel', function() {
         hideRate3: true,
         hideRate4: true,
         hideRate5: true,
-        flagIsLastPage: false,
         resetData: function() {
             return ratings = angular.copy(ratings_default, ratings);
         }
@@ -106,12 +105,13 @@ app.factory('UtilityFactory', function() {
     var util_default = {
         keepBubbleMessage: false,
         infoMessage: '',
+        flagIsLastPage: false,
 
-        reset: function() {
+        resetData: function() {
             return util = angular.copy(util_default, util);
         }
     };
-    util_default.reset();
+    util_default.resetData();
 
     return util;
 });
@@ -137,7 +137,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     /*
         Controle de exibição da últma página (r#esult)
     */
-    $scope.isLastPage = DataHolderModel.ratings.flagIsLastPage;
+    $scope.isLastPage = UtilityFactory.flagIsLastPage;
     $scope.clientType = $scope.model.ownership == "renter" ? "Inquilinos" : "Proprietários";
     $scope.clientAddress = $scope.model.userAddress.formatted_address;
     
@@ -180,7 +180,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
             if (i > 6) {
                 var routeTo = '/result';
                 $location.url(routeTo);
-                DataHolderModel.ratings.flagIsLastPage = true;
+                UtilityFactory.flagIsLastPage = true;
             }
             i++;
 
@@ -191,6 +191,8 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     /*
         Controles de exibição de valores mockados da página de resultado (#result)
     */
+    $scope.plusoftProductPrice = 50;
+    $scope.plusoftFinalProductPrice = 0;
     $scope.personalPropertyPrice = 10;
     $scope.personalLiabilityPrice = 100;
     $scope.lossOfUsePrice = 3;
@@ -203,6 +205,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.personalPropertyPrice == 100) {
             $("#toggleUPersonalProperty").addClass("disabled");
         }
+        calcPrice("property", $scope.personalPropertyPrice, true);
         $scope.$apply();
     })
     .on('click', '#toggleDPersonalProperty', function() {
@@ -211,6 +214,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.personalPropertyPrice == 10) {
             $("#toggleDPersonalProperty").addClass("disabled");
         }
+        calcPrice("property", 5, false);
         $scope.$apply();  
     })
     .on('click', '#toggleUPersonalLiability', function() {
@@ -219,6 +223,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.personalLiabilityPrice == 150) {
             $("#toggleUPersonalLiability").addClass("disabled");
         }
+        calcPrice("liability", $scope.personalLiabilityPrice, true);
         $scope.$apply();
     })
     .on('click', '#toggleDPersonalLiability', function() {
@@ -227,7 +232,8 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.personalLiabilityPrice == 100) {
             $("#toggleDPersonalLiability").addClass("disabled");
         }
-        $scope.$apply();  
+        calcPrice("liability", 10, false);
+        $scope.$apply();
     })
     .on('click', '#toggleULossPrice', function() {
         $("#toggleDLossPrice").removeClass("disabled");
@@ -235,6 +241,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.lossOfUsePrice == 15) {
             $("#toggleULossPrice").addClass("disabled");
         }
+        calcPrice("lossOfUse", $scope.lossOfUsePrice, true);
         $scope.$apply();  
     })
     .on('click', '#toggleDLossPrice', function() {
@@ -243,6 +250,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.lossOfUsePrice == 3) {
             $("#toggleDLossPrice").addClass("disabled");
         }
+        calcPrice("lossOfUse", 3, false);
         $scope.$apply();  
     })
      .on('click', '#toggleUMedicalPrice', function() {
@@ -251,6 +259,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.medicalPaymentsPrice == 20) {
             $("#toggleUMedicalPrice").addClass("disabled");
         }
+        calcPrice("medical", $scope.medicalPaymentsPrice, true);
         $scope.$apply();  
     })
     .on('click', '#toggleDMedicalPrice', function() {
@@ -259,8 +268,49 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         if ($scope.medicalPaymentsPrice == 1) {
             $("#toggleDMedicalPrice").addClass("disabled");
         }
+        calcPrice("medical", 1, false);
         $scope.$apply();  
     });
+
+    var totalProperty = 0, totalLiability = 0, totalLossOfUse = 0,  totalMedical = 0;
+    function calcPrice(item, price, add) {
+        
+        switch(item) {
+            case "property":
+                if (add) {
+                    totalProperty = price;
+                } else {
+                    totalProperty -= price;
+                }
+                break;
+            case "liability":
+                if (add) {
+                    totalLiability = price;
+                } else {
+                    totalLiability -= price;
+                }
+                break;
+            case "lossOfUse":
+                if (add) {
+                    totalLossOfUse = price;
+                } else {
+                    totalLossOfUse -= price;
+                }
+                break;
+            case "medical":
+                if (add) {
+                    totalMedical = price;
+                } else {
+                    totalMedical -= price;
+                }
+                break;
+            default:
+                break;
+        }
+
+        $scope.plusoftFinalProductPrice = totalProperty + totalLiability + totalLossOfUse + totalMedical;
+        $scope.plusoftFinalProductPrice = ($scope.plusoftFinalProductPrice / 12).toFixed(2);
+    }
     
 
     /*
@@ -606,6 +656,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     $scope.restart = function() {
         DataHolderModel.model.resetData();
         DataHolderModel.payment.resetData();
+        UtilityFactory.resetData();
         $scope.start();
     }
 
