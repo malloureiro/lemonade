@@ -385,6 +385,9 @@ select {
     background: #FF0083;
  }
 
+/*
+    Área "O que está coberto pelo seguro/ O que não está coberto pelo seguro"
+*/
 .covered-area {
     max-width: 1000px;
     margin: 0 auto;
@@ -479,7 +482,6 @@ select {
     max-width: 360px;
     height: 420px;
     padding: 20px;
-    /*padding: 130px 30px 30px 30px;*/
     margin: 20px;
     position: relative;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
@@ -510,6 +512,16 @@ select {
     -moz-transition: opacity .2s;
     -o-transition: opacity .2s;
     transition: opacity 0.2s;
+}
+
+.coverages-list li.box-white .price-toggles .btn-toggle.up:before {
+    content: "";
+    background: transparent url(../imgs/icn-sprite-50.svg) no-repeat -201px -51px;
+    background-size: 350px 100px;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    overflow: hidden;
 }
 
 .coverage-list li.box-white .price-toggles .price {
@@ -555,3 +567,82 @@ select {
     width: 110px;
     height: 100px;
 }
+/*
+    FIM ::: Área "O que está coberto pelo seguro/ O que não está coberto pelo seguro"
+*/
+
+/*
+    Área "Adicione Cobertura Extra"
+*/
+.scheduled-items {
+    margin-top: 37px;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-content: center;
+}
+.scheduled-item {
+    display: flex;
+    flex-flow: column;
+    width: 140px;
+    margin: 15px;
+    position: relative;
+}
+.scheduled-item .item-icon {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    width: 140px;
+    border: 1px solid #ECECEC;
+    border-radius: 50%;
+}
+.scheduled-item .item-details {
+    margin-top: 11px;
+}
+.scheduled-item #item-main-action {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 0;
+    font: 700 22px/30px "Lato", "Helvetica Neue", Arial, sans-serif;
+    text-decoration: none;
+}
+.btn-standard.btn-pink {
+    background-color: #FF0083;
+    color: #fff;
+    border: 0;
+}
+.jewelry img, .art img{
+    height: 75px;
+}
+.camera img {
+    height: 60px;
+    cursor: pointer;
+}
+.bicycle img {
+    height: 57px;
+}
+.scheduled-item .item-icon #item-premium-banner {
+    width: 144px;
+    height: 29px;
+    position: absolute;
+    bottom: 25px;
+    left: -3px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    background-image: url(../imgs/green_ribbon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+/*
+    FIM ::: Área "Adicione Cobertura Extra"
+*/
