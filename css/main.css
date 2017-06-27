@@ -7,7 +7,7 @@
 }
 
 .pink-link {
-    color: #FF0083;
+    color: #ed800b;
     text-decoration: none;
     cursor: pointer;
 }
@@ -45,7 +45,7 @@
 .mini-humanoid {
 	padding-left: 13px;
     width: 51px;
-    border: 1px solid #FF0083;
+    border: 1px solid #ed800b;
     height: 51px;
     border-radius: 100px;
     display: inline-block;
@@ -94,11 +94,11 @@
 }
 
 .form-control:focus {
-    border: 2px solid #FF0083;
+    border: 2px solid #ed800b;
 }
 
 .form-control-focused {
-    border: 2px solid #FF0083;
+    border: 2px solid #ed800b;
 }
 
 .start-buttons {
@@ -110,7 +110,7 @@
     border-radius: 6px;
     text-decoration: none;
     text-transform: uppercase;
-    background-color: #FF0083; /*PINK*/
+    background-color: #ed800b; /*PINK #FF0083*/
     color: #fff;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .start-buttons:hover {
-    background-color: #d0036c;
+    background-color: #bf6709; /*pink hover #dd0036c*/
 }
 
 .start-buttons:focus, .cancel-buttons:focus {
@@ -155,7 +155,7 @@
 }
 
 .error-message {
-    color: #FF0083;
+    color: #ed800b;
     position: relative;
     font-size: 14px;
     text-align: center;
@@ -181,7 +181,7 @@
 
 .clearable {
 	background:url(data:image/gif;base64,R0lGODlhBwAHAIAAAP///5KSkiH5BAAAAAAALAAAAAAHAAcAAAIMTICmsGrIXnLxuDMLADs=) no-repeat right -10px center;
-	padding:3px 18px 3px 4px;
+	padding: 20px 6px;
 	transition: background 0.4s; 
 }
 
@@ -314,7 +314,7 @@ select {
 }
 
 .u-stars {
-  color: #FF0083;
+  color: #ed800b;
   font-size: 20px;
 }
 
@@ -344,13 +344,13 @@ select {
 
 .price-circle {
     width: 140px;
-    border: 1px solid #FF0083;
+    border: 1px solid #ed800b;
     height: 140px;
     border-radius: 100px;
     padding: 10px;
     display: inline-block;
     margin-top: -65px;
-    background: #FF0083;
+    background: #ed800b;
     position: absolute;
     margin-left: -60px;
     color: white;
@@ -372,17 +372,17 @@ select {
 }
 
 .md-datepicker-focused {
-    border-bottom-color: #FF0083 !important;
+    border-bottom-color: #ed800b !important;
 }
 
 .md-default-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator {
-    border: 1px solid #FF0083;
+    border: 1px solid #ed800b;
 }
 
 .md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator, .md-calendar-date.md-calendar-selected-date 
 .md-calendar-date-selection-indicator, .md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator,
  .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
-    background: #FF0083;
+    background: #ed800b;
  }
 
 /*
@@ -499,7 +499,7 @@ select {
     width: 100%;
     height: 73px;
     padding: 0 20px;
-    border-top: 3px #FF0083 solid;
+    border-top: 3px #ed800b solid;
 }
 
 .coverage-list li.box-white .price-toggles .btn-toggle {
@@ -627,7 +627,7 @@ select {
 }
 
 .btn-standard.btn-pink {
-    background-color: #FF0083;
+    background-color: #ed800b;
     color: #fff;
     border: 0;
     cursor: pointer;
