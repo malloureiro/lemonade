@@ -605,7 +605,7 @@ select {
 .scheduled-item .item-details {
     margin-top: 11px;
 }
-.scheduled-item #item-main-action {
+.scheduled-item .item-main-action {
     position: absolute;
     top: 10px;
     left: 0;
@@ -616,10 +616,21 @@ select {
     font: 700 22px/30px "Lato", "Helvetica Neue", Arial, sans-serif;
     text-decoration: none;
 }
+
+.btn-close {
+    font-size: 16px !important;
+    left: 106px !important;
+    background-color: #dadada;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
 .btn-standard.btn-pink {
     background-color: #FF0083;
     color: #fff;
     border: 0;
+    cursor: pointer;
 }
 .jewelry img, .art img{
     height: 75px;
@@ -631,7 +642,7 @@ select {
 .bicycle img {
     height: 57px;
 }
-.scheduled-item .item-icon #item-premium-banner {
+.scheduled-item .item-icon .item-premium-banner {
     width: 144px;
     height: 29px;
     position: absolute;
@@ -644,6 +655,10 @@ select {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.item-premium-banner p {
+    color: #fff;
 }
 /*
     FIM ::: Área "Adicione Cobertura Extra"

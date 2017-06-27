@@ -192,11 +192,15 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         Controles de exibição de valores mockados da página de resultado (#result)
     */
     $scope.plusoftProductPrice = 50;
-    $scope.plusoftFinalProductPrice = 0;
+    $scope.plusoftFinalProductPrice = $scope.plusoftProductPrice;
     $scope.personalPropertyPrice = 10;
     $scope.personalLiabilityPrice = 100;
     $scope.lossOfUsePrice = 3;
     $scope.medicalPaymentsPrice = 1;
+    $scope.jewelryAddedPrice = 0;
+    $scope.artAddedPrice = 0;
+    $scope.bikeAddedPrice = 0;
+    $scope.camAddedPrice = 0;
 
     $(document)
     .on('click', '#toggleUPersonalProperty', function() {
@@ -270,10 +274,69 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         }
         calcPrice("medical", 1, false);
         $scope.$apply();  
+    })
+    .on('click', '#item-main-action-jewelry', function() {
+        $scope.jewelryAddedPrice += 1000;
+        $("#item-main-action-jewelry-close").show();
+        $("#item-premium-banner-jewelry").show();
+        calcPrice("jewelry", $scope.jewelryAddedPrice, true);
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-jewelry-close', function() {
+        calcPrice("jewelry", $scope.jewelryAddedPrice, false);
+        $scope.jewelryAddedPrice = 0;
+        $("#item-main-action-jewelry-close").hide();
+        $("#item-premium-banner-jewelry").hide();
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-art', function() {
+        $scope.artAddedPrice += 1000;
+        $("#item-main-action-art-close").show();
+        $("#item-premium-banner-art").show();
+        calcPrice("art", $scope.artAddedPrice, true);
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-art-close', function() {
+        calcPrice("art", $scope.artAddedPrice, false);
+        $scope.artAddedPrice = 0;
+        $("#item-main-action-art-close").hide();
+        $("#item-premium-banner-art").hide();
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-bike', function() {
+        $scope.bikeAddedPrice += 500;
+        $("#item-main-action-bike-close").show();
+        $("#item-premium-banner-bike").show();
+        calcPrice("bike", $scope.bikeAddedPrice, true);
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-bike-close', function() {
+        calcPrice("bike", $scope.bikeAddedPrice, false);
+        $scope.bikeAddedPrice = 0;
+        $("#item-main-action-bike-close").hide();
+        $("#item-premium-banner-bike").hide();
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-cam', function() {
+        $scope.camAddedPrice += 500;
+        $("#item-main-action-cam-close").show();
+        $("#item-premium-banner-cam").show();
+        calcPrice("camera", $scope.camAddedPrice, true);
+        $scope.$apply();
+    })
+    .on('click', '#item-main-action-cam-close', function() {
+        calcPrice("camera", $scope.camAddedPrice, false);
+        $scope.camAddedPrice = 0;
+        $("#item-main-action-cam-close").hide();
+        $("#item-premium-banner-cam").hide();
+        $scope.$apply();
     });
 
     var totalProperty = 0, totalLiability = 0, totalLossOfUse = 0,  totalMedical = 0;
+    var totalJewelry = 0, totalArt = 0, totalBike = 0, totalCamera = 0;
+
     function calcPrice(item, price, add) {
+        $scope.plusoftFinalProductPrice = $scope.plusoftProductPrice;
         
         switch(item) {
             case "property":
@@ -304,11 +367,40 @@ app.controller('appController', function($scope, $location, $route, $interval, $
                     totalMedical -= price;
                 }
                 break;
+            case "jewelry":
+                if (add) {
+                    totalJewelry = price;
+                } else {
+                    totalJewelry -= price;
+                }
+                break;
+            case "art":
+                if (add) {
+                    totalArt = price;
+                } else {
+                    totalArt -= price;
+                }
+                break;
+            case "bike":
+                if (add) {
+                    totalBike = price;
+                } else {
+                    totalBike -= price;
+                }
+                break;
+            case "camera":
+                if (add) {
+                    totalCamera = price;
+                } else {
+                    totalCamera -= price;
+                }
+                break;
             default:
                 break;
         }
 
-        $scope.plusoftFinalProductPrice = totalProperty + totalLiability + totalLossOfUse + totalMedical;
+        $scope.plusoftFinalProductPrice = totalProperty + totalLiability + totalLossOfUse + totalMedical +
+            totalJewelry + totalArt + totalBike + totalCamera;
         $scope.plusoftFinalProductPrice = ($scope.plusoftFinalProductPrice / 12).toFixed(2);
     }
     
