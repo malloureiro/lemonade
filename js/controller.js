@@ -143,7 +143,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
     
 
     /*
-        Controles de exibição de Rating
+        Controles de exibição de Rating - MOCK
     */
     $scope.ratingsMessage = DataHolderModel.ratings.ratingsMessage;
     $scope.loadingValue = DataHolderModel.ratings.loadingValue;
@@ -188,6 +188,84 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         }, 750, 7, true);
     }
 
+    /*
+        Controles de exibição de valores mockados da página de resultado (#result)
+    */
+    $scope.personalPropertyPrice = 10;
+    $scope.personalLiabilityPrice = 100;
+    $scope.lossOfUsePrice = 3;
+    $scope.medicalPaymentsPrice = 1;
+
+    $(document)
+    .on('click', '#toggleUPersonalProperty', function() {
+        $("#toggleDPersonalProperty").removeClass("disabled");
+        $scope.personalPropertyPrice += 5;
+        if ($scope.personalPropertyPrice == 100) {
+            $("#toggleUPersonalProperty").addClass("disabled");
+        }
+        $scope.$apply();
+    })
+    .on('click', '#toggleDPersonalProperty', function() {
+        $("#toggleUPersonalProperty").removeClass("disabled");
+        $scope.personalPropertyPrice -= 5;
+        if ($scope.personalPropertyPrice == 10) {
+            $("#toggleDPersonalProperty").addClass("disabled");
+        }
+        $scope.$apply();  
+    })
+    .on('click', '#toggleUPersonalLiability', function() {
+        $("#toggleDPersonalLiability").removeClass("disabled");
+        $scope.personalLiabilityPrice += 10;
+        if ($scope.personalLiabilityPrice == 150) {
+            $("#toggleUPersonalLiability").addClass("disabled");
+        }
+        $scope.$apply();
+    })
+    .on('click', '#toggleDPersonalLiability', function() {
+        $("#toggleUPersonalLiability").removeClass("disabled");
+        $scope.personalLiabilityPrice -= 10;
+        if ($scope.personalLiabilityPrice == 100) {
+            $("#toggleDPersonalLiability").addClass("disabled");
+        }
+        $scope.$apply();  
+    })
+    .on('click', '#toggleULossPrice', function() {
+        $("#toggleDLossPrice").removeClass("disabled");
+        $scope.lossOfUsePrice += 3;
+        if ($scope.lossOfUsePrice == 15) {
+            $("#toggleULossPrice").addClass("disabled");
+        }
+        $scope.$apply();  
+    })
+    .on('click', '#toggleDLossPrice', function() {
+        $("#toggleULossPrice").removeClass("disabled");
+        $scope.lossOfUsePrice -= 3;
+        if ($scope.lossOfUsePrice == 3) {
+            $("#toggleDLossPrice").addClass("disabled");
+        }
+        $scope.$apply();  
+    })
+     .on('click', '#toggleUMedicalPrice', function() {
+        $("#toggleDMedicalPrice").removeClass("disabled");
+        $scope.medicalPaymentsPrice += 1;
+        if ($scope.medicalPaymentsPrice == 20) {
+            $("#toggleUMedicalPrice").addClass("disabled");
+        }
+        $scope.$apply();  
+    })
+    .on('click', '#toggleDMedicalPrice', function() {
+        $("#toggleUMedicalPrice").removeClass("disabled");
+        $scope.medicalPaymentsPrice -= 1;
+        if ($scope.medicalPaymentsPrice == 1) {
+            $("#toggleDMedicalPrice").addClass("disabled");
+        }
+        $scope.$apply();  
+    });
+    
+
+    /*
+        Controle de seta voltar para página anterior
+    */
     $scope.goBackwards = function() {
         var pageId = $("section > .container-fluid").attr("id");
 

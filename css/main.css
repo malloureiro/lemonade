@@ -503,7 +503,7 @@ select {
 }
 
 .coverage-list li.box-white .price-toggles .btn-toggle {
-    width: 30px;
+    width: 29px;
     height: 30px;
     border: 1px solid #DADADA;
     border-radius: 50%;
@@ -512,16 +512,23 @@ select {
     -moz-transition: opacity .2s;
     -o-transition: opacity .2s;
     transition: opacity 0.2s;
+    cursor: pointer;
 }
 
-.coverages-list li.box-white .price-toggles .btn-toggle.up:before {
-    content: "";
+.coverage-list li.box-white .price-toggles .btn-toggle.up {
     background: transparent url(../imgs/icn-sprite-50.svg) no-repeat -201px -51px;
-    background-size: 350px 100px;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    overflow: hidden;
+}
+.coverage-list li.box-white .price-toggles .btn-toggle.down {
+    background: transparent url(../imgs/icn-sprite-50.svg) no-repeat -151px -51px;
+}
+
+.coverage-list li.box-white .price-toggles .btn-toggle.down.disabled {
+    pointer-events: none;
+    background: transparent url(../imgs/icn-sprite-50.svg) no-repeat -101px -0;
+}
+.coverage-list li.box-white .price-toggles .btn-toggle.up.disabled {
+    pointer-events: none;
+    background: transparent url(../imgs/icn-sprite-50.svg) no-repeat -151px -0;
 }
 
 .coverage-list li.box-white .price-toggles .price {
@@ -529,11 +536,6 @@ select {
     line-height: 70px;
     font-weight: 700;
     color: #4A4A4A;
-}
-
-.coverage-list li.box-white .price-toggles .btn-toggle.disabled {
-    opacity: 0.2;
-    pointer-events: none;
 }
 
 .personal_property {

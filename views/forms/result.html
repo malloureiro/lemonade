@@ -51,9 +51,9 @@
 								<p>Para jóias, arte, câmeras ou bicicletas em valor maior do que R$ 1.000</p>
 							</div>
 							<div class="price-toggles">
-								<a href="#" class="btn-toggle down"></a>
-								<span class="price">$250,000</span>
-								<a href="#" class="btn-toggle up disabled"></a>
+								<span id="toggleDPersonalProperty" class="btn-toggle down disabled"></span>
+								<span class="price">R$ {{personalPropertyPrice}}.000,00</span>
+								<span id="toggleUPersonalProperty" class="btn-toggle up"></span>
 							</div>
 						</li>
 						<li class="box-white">
@@ -63,9 +63,9 @@
 								Se alguém se machucar em sua propriedade e decidir tomar medidas legais, este é o valor máximo que pagaremos para cobrir despesas legais e custos médicos.
 							</p>
 							<div class="price-toggles">
-								<a href="#" class="btn-toggle down"></a>
-								<span class="price">$500,000</span>
-								<a href="#" class="btn-toggle up disabled"></a>
+								<span id="toggleDPersonalLiability" class="btn-toggle down disabled"></span>
+								<span class="price">R$ {{personalLiabilityPrice}}.000,00</span>
+								<span id="toggleUPersonalLiability" class="btn-toggle up"></span>
 							</div>
 						</li>
 						<li class="box-white">
@@ -75,9 +75,9 @@
 								Esperamos que isso nunca aconteça, mas se o seu lugar tornar-se inabitável por alguma razão, nós o colocamos em um bom hotel ou casa de aluguel similar. Nós também incluiremos despesas diárias para que você possa se recuperar. Este é o máximo que pagaremos em tal evento.
 							</p>
 							<div class="price-toggles">
-								<a href="#" class="btn-toggle down"></a>
-								<span class="price">$75,000</span>
-								<a href="#" class="btn-toggle up"></a>
+								<span id="toggleDLossPrice" class="btn-toggle down disabled"></span>
+								<span class="price">R$ {{lossOfUsePrice}}.000,00</span>
+								<span id="toggleULossPrice" class="btn-toggle up"></span>
 							</div>
 						</li>
 						<li class="box-white">
@@ -87,9 +87,9 @@
 								Vamos cobrir despesas médicas até este valor se um convidado ou vizinho estiver ferido em sua propriedade.
 							</p>
 							<div class="price-toggles">
-								<a href="#" class="btn-toggle down disabled"></a>
-								<span class="price">$1,000</span>
-								<a href="#" class="btn-toggle up"></a>
+								<span id="toggleDMedicalPrice" class="btn-toggle down disabled"></span>
+								<span class="price">R$ {{medicalPaymentsPrice}}.000,00</span>
+								<span id="toggleUMedicalPrice" class="btn-toggle up"></span>
 							</div>
 						</li>
 					</ul>
