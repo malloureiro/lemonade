@@ -1,9 +1,9 @@
 .bg-gray {
-    background-color: #f5f3f3;
+    background-color: #f5f3f3 !important;
 }
 
 .bg-white {
-    background-color: #fff;
+    background-color: #fff !important;
 }
 
 .pink-link {
@@ -676,8 +676,9 @@ select {
 }
 
 .main-section-1 {
-    margin-top: 75px;
-    border-bottom: : 1px solid #dadada;
+    padding: 40px;
+    padding-top: 85px;
+    border-bottom: 1px solid #dadada;
 }
 
 .main-section-2 {
@@ -686,8 +687,9 @@ select {
     background-size: 1281px 680px, 1366px 140px;
     align-items: flex-start;
     height: 680px;
-    padding-top: 85px;
-    border-bottom: 2px #4A4A4A solid;
+    padding-top: 30px;
+    /*border-bottom: 2px #4A4A4A solid;*/
+    border-bottom: 2px #dadada solid;
 }
 
 .title-lrg {
@@ -695,13 +697,18 @@ select {
 }
 
 .main-section-3 {
-    height: 760px;
-    padding-top: 85px;
+    height: 710px;
+    padding-top: 30px;
     padding-bottom: 0;
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 1px #DADADA solid;
     background: transparent url(../imgs/bg-app-sketch.svg) center bottom -2px no-repeat;
+}
+
+.main-section-4 {
+    padding-top: 30px;
+    padding: 40px;
 }
 
 .main-section-4 .list-insurance {
@@ -713,7 +720,7 @@ select {
 }
 
 .main-section-4 .list-insurance li {
-    background: #F7F7F7;
+    /*background: #F7F7F7;*/
     max-width: 340px;
     border: 1px #DADADA solid;
     padding: 25px 45px;
@@ -747,51 +754,24 @@ select {
     line-height: 10px;
 }
 
-#footer {
+/*
+    Footer Plusoft
+*/
+
+.footer {
     border-top-color: #333333;
     background: #444444;
     color: #999999;
+    height: 136px;
 }
 
-#copyright {
+.copyright {
     background: #222222;
     color: #777777;
-    padding: 5px 0;
 }
 
-#copyright a {
+.copyright a {
     color: #888888;
-}
-
-#copyright .copyright-text {
-    padding: 10px 0 10px 0;
-}
-
-.footer-container {
-    position: relative;
-    width: 960px;
-    margin: 0 auto;
-    padding: 0;
-}
-
-.footer-container .eight.columns {
-    width: 460px;
-}
-
-.footer-container .column, .footer-container .columns {
-    float: left;
-    display: inline;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-#copyright .social-icons {
-    float: right;
-    font-size: 11px;
-}
-
-#copyright .social-icons ul li a {
-    opacity: 1;
 }
 
 .social-icons ul li {
@@ -829,13 +809,4 @@ select {
 }
 .social-youtube a {
     background: url(../imgs/youtube.png) no-repeat 0 0;
-}
-
-.clearfix:before, .clearfix:after, .row:before, .row:after {
-    content: '\0020';
-    display: block;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
-    height: 0;
 }
