@@ -138,7 +138,7 @@ app.controller('appController', function($scope, $location, $route, $interval, $
         Controle de exibição da últma página (r#esult)
     */
     $scope.isLastPage = UtilityFactory.flagIsLastPage;
-    $scope.clientType = $scope.model.ownership == "renter" ? "Inquilinos" : "Proprietários";
+    $scope.clientType = $scope.model.ownership == "renter" ? "Locatários" : "Proprietários";
     $scope.clientAddress = $scope.model.userAddress.formatted_address;
     
 

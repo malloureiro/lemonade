@@ -663,3 +663,179 @@ select {
 /*
     FIM ::: Área "Adicione Cobertura Extra"
 */
+
+/*
+    Tela Institucional
+*/
+
+.main-section p {
+    font-size: 20px;
+    line-height: 28px;
+    color: #4A4A4A;
+    padding: 0 20px 20px 20px;
+}
+
+.main-section-1 {
+    margin-top: 75px;
+    border-bottom: : 1px solid #dadada;
+}
+
+.main-section-2 {
+    background: url(../imgs/bg-flood.png) center top no-repeat,
+    url(../imgs/bg-flood-water.png) center bottom -2px repeat-x;
+    background-size: 1281px 680px, 1366px 140px;
+    align-items: flex-start;
+    height: 680px;
+    padding-top: 85px;
+    border-bottom: 2px #4A4A4A solid;
+}
+
+.title-lrg {
+    font: 700 46px/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+.main-section-3 {
+    height: 760px;
+    padding-top: 85px;
+    padding-bottom: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px #DADADA solid;
+    background: transparent url(../imgs/bg-app-sketch.svg) center bottom -2px no-repeat;
+}
+
+.main-section-4 .list-insurance {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    list-style-type: none;
+}
+
+.main-section-4 .list-insurance li {
+    background: #F7F7F7;
+    max-width: 340px;
+    border: 1px #DADADA solid;
+    padding: 25px 45px;
+    margin: 20px 20px 40px 20px;
+    border-radius: 5px;
+}
+
+.main-section-4 .list-insurance li h3 {
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #4A4A4A;
+    padding: 0 10px 20px 10px;
+}
+
+.main-section-4 .list-insurance li small {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: #B7B7B7;
+}
+
+.main-section-4 .list-insurance li em {
+    font: 500 58px/73px "Merriweather", Georgia, serif;
+    color: #4A4A4A;
+    display: block;
+    padding: 10px 0 30px 0;
+}
+
+.main-section-4 .list-insurance .start-buttons {
+    padding: 5px 28px;
+    line-height: 10px;
+}
+
+#footer {
+    border-top-color: #333333;
+    background: #444444;
+    color: #999999;
+}
+
+#copyright {
+    background: #222222;
+    color: #777777;
+    padding: 5px 0;
+}
+
+#copyright a {
+    color: #888888;
+}
+
+#copyright .copyright-text {
+    padding: 10px 0 10px 0;
+}
+
+.footer-container {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.footer-container .eight.columns {
+    width: 460px;
+}
+
+.footer-container .column, .footer-container .columns {
+    float: left;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#copyright .social-icons {
+    float: right;
+    font-size: 11px;
+}
+
+#copyright .social-icons ul li a {
+    opacity: 1;
+}
+
+.social-icons ul li {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.social-icons ul li a {
+    -webkit-transition: all 0.2s ease 0s;
+    -moz-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+
+.social-twitter a {
+    background: url(../imgs/twitter.png) no-repeat 0 0;
+}
+.social-facebook a {
+    background: url(../imgs/facebook.png) no-repeat 0 0;
+}
+.social-instagram a {
+    background: url(../imgs/instagram.png) no-repeat 0 0;
+}
+.social-linkedin a {
+    background: url(../imgs/linkedin.png) no-repeat 0 0;
+}
+.social-youtube a {
+    background: url(../imgs/youtube.png) no-repeat 0 0;
+}
+
+.clearfix:before, .clearfix:after, .row:before, .row:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
